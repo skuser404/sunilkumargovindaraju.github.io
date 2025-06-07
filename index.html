@@ -3,1363 +3,665 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G SUNILKUMAR CYBER SECURITY</title>
+    <title>G SUNIL KUMAR - Elite Cyber Security Expert</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #0a192f;
-            --secondary-color: #112240;
-            --accent-color: #64ffda;
-            --text-color: #e6f1ff;
-            --text-secondary: #8892b0;
-            --glass-bg: rgba(17, 34, 64, 0.7);
-            --glass-border: rgba(100, 255, 218, 0.3);
-            --glass-shadow: rgba(0, 0, 0, 0.3);
-            --terminal-green: #00ff00;
+            --cyber-green: #00ff41;
+            --cyber-blue: #0affff;
+            --cyber-red: #ff073a;
+            --cyber-purple: #bf00ff;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent-color) var(--primary-color);
-        }
-
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--primary-color);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: var(--accent-color);
-            border-radius: 10px;
-            border: 2px solid var(--primary-color);
         }
 
         body {
-            font-family: 'Rajdhani', sans-serif;
-            background-color: var(--primary-color);
-            color: var(--text-color);
+            font-family: 'Orbitron', monospace;
+            background: var(--dark-bg);
+            color: var(--cyber-green);
             overflow-x: hidden;
-            background-image: url('https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg');
-            background-blend-mode: overlay;
-            background-attachment: fixed;
-        }
-
-        .terminal-font {
-            font-family: 'Source Code Pro', monospace;
-        }
-
-        .section {
             min-height: 100vh;
-            width: 100vw;
-            padding: 4rem 2rem;
             position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
 
-        .bg-matrix {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.2;
-        }
-
-        #particles-js {
+        .cyber-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -2;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(10, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(191, 0, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #0a0a0a 0%, #050505 100%);
         }
 
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            box-shadow: 0 8px 32px 0 var(--glass-shadow);
-            padding: 2rem;
-            margin: 1rem 0;
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px 0 var(--glass-shadow);
-            border-color: var(--accent-color);
-        }
-
-        .nav-fixed {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 30px;
-            padding: 0.5rem;
-            box-shadow: 0 8px 32px 0 var(--glass-shadow);
-        }
-
-        .nav-btn {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            margin: 0.25rem 0;
-            color: var(--text-color);
-            background: transparent;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            background: rgba(100, 255, 218, 0.1);
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-        }
-
-        .social-preview {
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 1rem;
-            border: 1px solid var(--glass-border);
-            background: rgba(10, 25, 47, 0.8);
-            box-shadow: 0 8px 32px 0 var(--glass-shadow);
-        }
-
-        .typing-text {
-            border-right: 3px solid var(--accent-color);
-            white-space: nowrap;
-            overflow: hidden;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--accent-color) }
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 2rem auto;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 3px;
-            background-color: var(--accent-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1.5px;
-            box-shadow: 0 0 15px var(--accent-color);
-        }
-
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-
-        .timeline-item-left {
-            left: 0;
-            text-align: right;
-        }
-
-        .timeline-item-right {
-            left: 50%;
-        }
-
-        .timeline-content {
-            padding: 20px;
-            border-radius: 6px;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            right: -13px;
-            background-color: var(--primary-color);
-            border: 4px solid var(--accent-color);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-            box-shadow: 0 0 15px var(--accent-color);
-        }
-
-        .timeline-item-right::after {
-            left: -13px;
-        }
-
-        .glitch-text {
-            text-shadow: 
-                0.05em 0 0 rgba(255, 0, 0, 0.75),
-                -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
-                0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
-            animation: glitch 500ms infinite;
-        }
-
-        @keyframes glitch {
-            0% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.025em -0.05em 0 rgba(0, 255, 0, 0.75), 0.025em 0.05em 0 rgba(0, 0, 255, 0.75); }
-            14% { text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75), -0.025em -0.05em 0 rgba(0, 255, 0, 0.75), 0.025em 0.05em 0 rgba(0, 0, 255, 0.75); }
-            15% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75); }
-            49% { text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75), 0.025em 0.025em 0 rgba(0, 255, 0, 0.75), -0.05em -0.05em 0 rgba(0, 0, 255, 0.75); }
-            50% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75); }
-            99% { text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75), 0.05em 0 0 rgba(0, 255, 0, 0.75), 0 -0.05em 0 rgba(0, 0, 255, 0.75); }
-            100% { text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75), -0.025em -0.025em 0 rgba(0, 255, 0, 0.75), -0.025em -0.05em 0 rgba(0, 0, 255, 0.75); }
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.75rem 1.5rem;
-            background: transparent;
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            border-radius: 4px;
-            font-family: 'Source Code Pro', monospace;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            cursor: pointer;
-            margin-top: 1rem;
-        }
-
-        .cta-button:hover {
-            background: rgba(100, 255, 218, 0.1);
-            box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .terminal {
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 8px;
-            padding: 1rem;
-            font-family: 'Source Code Pro', monospace;
-            color: var(--terminal-green);
-            margin: 1rem 0;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .terminal-line {
-            display: block;
-            line-height: 1.6;
-            margin-bottom: 0.5rem;
-        }
-
-        .terminal-prompt::before {
-            content: '$ ';
-            color: var(--accent-color);
-        }
-
-        .terminal-output {
-            display: block;
-            margin-left: 1rem;
-            color: #ccc;
-        }
-
-        @media (max-width: 768px) {
-            .section {
-                padding: 3rem 1rem;
-            }
-            
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item-left {
-                text-align: left;
-            }
-            
-            .timeline-item-right, .timeline-item-left {
-                left: 0;
-            }
-            
-            .timeline-item::after {
-                left: 18px;
-                right: auto;
-            }
-            
-            .nav-fixed {
-                flex-direction: row;
-                bottom: 1rem;
-                top: auto;
-                left: 50%;
-                transform: translateX(-50%);
-                width: auto;
-                border-radius: 30px;
-            }
-            
-            .nav-btn {
-                margin: 0 0.25rem;
-            }
-        }
-
-        .social-icon {
-            font-size: 1.5rem;
-            margin-right: 0.5rem;
-            color: var(--accent-color);
-        }
-
-        .achievement-badge {
-            background: rgba(10, 25, 47, 0.9);
-            border: 1px solid var(--accent-color);
-            border-radius: 50px;
-            padding: 0.5rem 1rem;
-            display: inline-flex;
-            align-items: center;
-            margin: 0.5rem;
-            font-size: 0.9rem;
-            box-shadow: 0 0 10px rgba(100, 255, 218, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .achievement-badge:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
-        }
-
-        .achievement-badge i {
-            margin-right: 0.5rem;
-        }
-
-        .profile-img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 3px solid var(--accent-color);
-            box-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-        }
-
-        .highlight {
-            color: var(--accent-color);
-            font-weight: 600;
-        }
-
-        .skill-tag {
-            background: rgba(100, 255, 218, 0.1);
-            color: var(--accent-color);
-            border: 1px solid var(--accent-color);
-            border-radius: 30px;
-            padding: 0.25rem 0.75rem;
-            font-size: 0.85rem;
-            margin: 0.25rem;
-            display: inline-block;
-            transition: all 0.3s ease;
-        }
-
-        .skill-tag:hover {
-            background: rgba(100, 255, 218, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .social-preview-frame {
-            border: none;
-            width: 100%;
-            height: 400px;
-            border-radius: 8px;
-            background: rgba(10, 25, 47, 0.5);
-        }
-
-        .github-preview {
-            background: #0d1117;
-            padding: 1.5rem;
-            border-radius: 8px;
-            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
-            color: #c9d1d9;
-        }
-
-        .gh-profile-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #21262d;
-        }
-
-        .gh-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 1rem;
-        }
-
-        .gh-username {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #e6edf3;
-        }
-
-        .gh-repo {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .gh-repo-name {
-            color: #58a6ff;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .gh-repo-desc {
-            color: #8b949e;
-            font-size: 0.875rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .gh-repo-stats {
-            display: flex;
-            align-items: center;
-            font-size: 0.75rem;
-        }
-
-        .gh-repo-stat {
-            display: flex;
-            align-items: center;
-            margin-right: 1rem;
-            color: #8b949e;
-        }
-
-        .linkedin-preview {
-            background: #fff;
-            color: #000;
-            font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Fira Sans, Ubuntu, Oxygen, Oxygen Sans, Cantarell;
-            padding: 1.5rem;
-            border-radius: 8px;
-        }
-
-        .li-profile-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .li-avatar {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            margin-right: 1rem;
-            border: 2px solid #0a66c2;
-        }
-
-        .li-name {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: rgba(0, 0, 0, 0.9);
-            margin-bottom: 0.25rem;
-        }
-
-        .li-headline {
-            font-size: 0.875rem;
-            color: rgba(0, 0, 0, 0.6);
-            margin-bottom: 0.25rem;
-        }
-
-        .li-company {
-            font-size: 0.875rem;
-            color: rgba(0, 0, 0, 0.6);
-        }
-
-        .li-section {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.15);
-        }
-
-        .li-section-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: rgba(0, 0, 0, 0.9);
-            margin-bottom: 0.75rem;
-        }
-
-        .li-section-item {
-            margin-bottom: 1rem;
-        }
-
-        .li-section-item-title {
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-            color: rgba(0, 0, 0, 0.9);
-        }
-
-        .li-section-item-subtitle {
-            color: rgba(0, 0, 0, 0.6);
-            font-size: 0.875rem;
-        }
-
-        .instagram-preview {
-            background: #fff;
-            border-radius: 8px;
-            font-family: -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
-            padding: 1rem;
-        }
-
-        .ig-header {
-            display: flex;
-            align-items: center;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #dbdbdb;
-        }
-
-        .ig-avatar {
-            width: 77px;
-            height: 77px;
-            border-radius: 50%;
-            margin-right: 1rem;
-            border: 2px solid #c32aa3;
-        }
-
-        .ig-profile-info {
-            flex: 1;
-        }
-
-        .ig-username {
-            font-weight: 600;
-            font-size: 1rem;
-            color: #262626;
-            margin-bottom: 0.25rem;
-        }
-
-        .ig-stats {
-            display: flex;
-            margin-bottom: 0.5rem;
-        }
-
-        .ig-stat {
-            margin-right: 1rem;
-            font-size: 0.875rem;
-        }
-
-        .ig-stat-number {
-            font-weight: 600;
-        }
-
-        .ig-bio {
-            font-size: 0.875rem;
-            color: #262626;
-        }
-
-        .ig-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 4px;
-            margin-top: 1rem;
-        }
-
-        .ig-post {
-            aspect-ratio: 1/1;
-            background-color: #f6f6f6;
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .ig-post-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .glitch-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.15) 0px,
-                rgba(0, 0, 0, 0.15) 1px,
-                transparent 1px,
-                transparent 2px
-            );
-            pointer-events: none;
-            z-index: 100;
-            opacity: 0.1;
-        }
-
-        .loading {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: var(--primary-color);
-            z-index: 1000;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-
-        .loading-text {
-            margin-top: 1rem;
-            font-family: 'Source Code Pro', monospace;
-            color: var(--accent-color);
-            text-align: center;
-        }
-
-        .loading-bar {
-            width: 300px;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            overflow: hidden;
-            position: relative;
-            margin-top: 1rem;
-        }
-
-        .loading-progress {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 0;
-            background: var(--accent-color);
-            box-shadow: 0 0 10px var(--accent-color);
-            transition: width 3s ease;
-        }
-
-        .hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        #matrix-canvas {
+        .matrix-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--cyber-green);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            50% { transform: translateY(-100px) rotate(180deg); }
+        }
+
+        .glow-text {
+            text-shadow: 
+                0 0 5px var(--cyber-green),
+                0 0 10px var(--cyber-green),
+                0 0 20px var(--cyber-green),
+                0 0 40px var(--cyber-green);
+            animation: pulse-glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            from { text-shadow: 0 0 5px var(--cyber-green), 0 0 10px var(--cyber-green), 0 0 20px var(--cyber-green), 0 0 40px var(--cyber-green); }
+            to { text-shadow: 0 0 10px var(--cyber-green), 0 0 20px var(--cyber-green), 0 0 30px var(--cyber-green), 0 0 60px var(--cyber-green); }
+        }
+
+        .cyber-card {
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.1) 0%, rgba(10, 255, 255, 0.05) 100%);
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cyber-card:hover::before {
+            left: 100%;
+        }
+
+        .cyber-card:hover {
+            border-color: var(--cyber-green);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .cyber-button {
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 65, 0.1));
+            border: 1px solid var(--cyber-green);
+            color: var(--cyber-green);
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cyber-button:hover {
+            background: rgba(0, 255, 65, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+            color: #000;
+            background-color: var(--cyber-green);
+        }
+
+        .terminal-text {
+            font-family: 'Fira Code', monospace;
+            color: var(--cyber-green);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border-left: 3px solid var(--cyber-green);
+        }
+
+        .skill-bar {
+            background: rgba(0, 0, 0, 0.5);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--cyber-green), var(--cyber-blue));
+            border-radius: 4px;
+            transition: width 2s ease;
+            position: relative;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shine 2s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid var(--cyber-green);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--cyber-green); }
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            transition: all 0.3s ease;
+            color: var(--cyber-green);
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2) rotate(360deg);
+            color: var(--cyber-blue);
+            text-shadow: 0 0 20px currentColor;
+        }
+
+        .certification-badge {
+            background: linear-gradient(45deg, rgba(0, 255, 65, 0.1), rgba(10, 255, 255, 0.1));
+            border: 1px solid var(--cyber-green);
+            border-radius: 50px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+            margin: 4px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .certification-badge:hover {
+            background: var(--cyber-green);
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        .matrix-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .matrix-char {
+            position: absolute;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            color: var(--cyber-green);
+            opacity: 0.3;
+            animation: matrix-fall linear infinite;
+        }
+
+        @keyframes matrix-fall {
+            0% { 
+                transform: translateY(-100vh); 
+                opacity: 0; 
+            }
+            10% { 
+                opacity: 0.3; 
+            }
+            90% { 
+                opacity: 0.3; 
+            }
+            100% { 
+                transform: translateY(100vh); 
+                opacity: 0; 
+            }
+        }
+
+        .cyber-grid {
+            background-image: 
+                linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            position: relative;
+        }
+
+        @media print {
+            body { font-size: 12px; }
+            .container { padding: 1rem; }
+            .section { margin-bottom: 1.5rem; padding: 1rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading" id="loading-screen">
-        <h2 class="glitch-text text-3xl font-bold mb-4">G SUNILKUMAR CYBER SECURITY</h2>
-        <div class="terminal-font loading-text">Initializing secure connection...</div>
-        <div class="loading-bar">
-            <div class="loading-progress" id="loading-progress"></div>
-        </div>
-        <div class="terminal-font loading-text" id="loading-percentage">0%</div>
+    <div class="cyber-bg"></div>
+    <div class="cyber-grid"></div>
+    <div class="matrix-bg">
+        <div class="matrix-rain" id="matrixRain"></div>
     </div>
 
-    <!-- Glitch Overlay -->
-    <div class="glitch-overlay"></div>
-
-    <!-- Matrix Animation Canvas -->
-    <canvas id="matrix-canvas"></canvas>
-
-    <!-- Particle.js Background -->
-    <div id="particles-js"></div>
-
-    <!-- Navigation -->
-    <nav class="nav-fixed">
-        <a href="#home" class="nav-btn" title="Home"><i class="fas fa-home"></i></a>
-        <a href="#about" class="nav-btn" title="About"><i class="fas fa-user-shield"></i></a>
-        <a href="#achievements" class="nav-btn" title="Achievements"><i class="fas fa-trophy"></i></a>
-        <a href="#social-feeds" class="nav-btn" title="Social Media"><i class="fas fa-rss"></i></a>
-        <a href="#contact" class="nav-btn" title="Contact"><i class="fas fa-envelope"></i></a>
-    </nav>
-
-    <!-- Home Section -->
-    <section id="home" class="section">
-        <div class="container mx-auto max-w-5xl reveal">
-            <div class="glass-card">
-                <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/2 mb-8 md:mb-0 flex justify-center">
-                        <img src="https://media.licdn.com/dms/image/v2/D5603AQHUkehNM_D_Qw/profile-displayphoto-shrink_800_800/B56ZUuKB10HoAk-/0/1740236137393?e=1749686400&v=beta&t=9s9ok8nCLkYEHRFne5BiBCBPtFPI_h387VUE-pT96OY" alt="G Sunil Kumar" class="profile-img">
-                    </div>
-                    <div class="md:w-1/2">
-                        <div class="terminal mb-4">
-                            <span class="terminal-line terminal-prompt">whoami</span>
-                            <span class="terminal-line terminal-output" id="terminal-name">G Sunil Kumar</span>
-                            <span class="terminal-line terminal-prompt">status</span>
-                            <span class="terminal-line terminal-output" id="terminal-status">Cybersecurity Expert | Ethical Hacker</span>
-                        </div>
-                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 glitch-text">G SUNILKUMAR</h1>
-                        <h2 class="text-2xl md:text-3xl text-accent-color font-bold mb-6 typing-text terminal-font">CYBER SECURITY</h2>
-                        <p class="text-text-secondary mb-6 terminal-font">
-                            <span class="text-accent-color">&gt;</span> Technical Lead Cloud Club at Jain University<br>
-                            <span class="text-accent-color">&gt;</span> Certified Ethical Hacker<br>
-                            <span class="text-accent-color">&gt;</span> Cybersecurity Expert
-                        </p>
-                        <div class="flex flex-wrap">
-                            <a href="#contact" class="cta-button mr-4"><i class="fas fa-paper-plane mr-2"></i> Contact Me</a>
-                            <a href="#social-feeds" class="cta-button"><i class="fas fa-rss mr-2"></i> My Profiles</a>
-                        </div>
-                    </div>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="section">
+            <div class="text-center mb-8">
+                <div class="mb-6">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/crawler_linkedin_profile_thumbnails/91a318d4-18d8-3fb4-a370-6087210769e9" 
+                         alt="G SUNIL KUMAR" 
+                         class="w-32 h-32 rounded-full mx-auto border-4 border-green-400 shadow-lg" 
+                         style="box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);">
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container mx-auto max-w-5xl reveal">
-            <h2 class="text-4xl font-bold mb-8 glitch-text text-center">About Me</h2>
-            <div class="glass-card">
-                <div class="flex flex-col md:flex-row">
-                    <div class="md:w-1/2 mb-8 md:mb-0 pr-0 md:pr-8">
-                        <h3 class="text-2xl font-bold mb-4"><span class="highlight">Professional Profile</span></h3>
-                        <p class="mb-4">I am an <span class="highlight">Ethical Hacker and Cyber Security Consultant</span> specializing in Web Application Security and Information Security Training. My security findings have been recognized by tech giants like Microsoft, Twitter, Gmail, Cisco and many more.</p>
-                        <p class="mb-4">Currently serving as the <span class="highlight">Technical Lead Cloud Club</span> at Jain (Deemed-to-be University), I bring technical expertise and leadership to cloud computing initiatives.</p>
-                        <p>With superior customer service skills and a commitment to cybersecurity excellence, I help organizations secure their digital assets and stay ahead of emerging threats.</p>
-                        
-                        <h3 class="text-2xl font-bold mt-8 mb-4"><span class="highlight">Education</span></h3>
-                        <p class="mb-2"><span class="highlight">Jain (Deemed-to-be University)</span></p>
-                        <p class="mb-4">Cybersecurity with focus on Cyber/Computer Forensics and Counterterrorism<br>2023 - 2027</p>
-                    </div>
-                    <div class="md:w-1/2">
-                        <h3 class="text-2xl font-bold mb-4"><span class="highlight">Skills & Expertise</span></h3>
-                        <div class="flex flex-wrap mb-6">
-                            <div class="skill-tag">Ethical Hacking</div>
-                            <div class="skill-tag">Cybersecurity</div>
-                            <div class="skill-tag">Penetration Testing</div>
-                            <div class="skill-tag">Cloud Technology</div>
-                            <div class="skill-tag">AWS R-1</div>
-                            <div class="skill-tag">Web Application Security</div>
-                            <div class="skill-tag">Digital Forensics</div>
-                            <div class="skill-tag">Network Security</div>
-                            <div class="skill-tag">Security Auditing</div>
-                            <div class="skill-tag">Vulnerability Assessment</div>
-                        </div>
-                        
-                        <h3 class="text-2xl font-bold mb-4"><span class="highlight">Certifications</span></h3>
-                        <ul class="mb-4">
-                            <li class="mb-2"><i class="fas fa-certificate text-accent-color mr-2"></i> Certified Ethical Hacker</li>
-                            <li class="mb-2"><i class="fas fa-certificate text-accent-color mr-2"></i> Introduction to Operating Systems (Coursera)</li>
-                            <li class="mb-2"><i class="fas fa-certificate text-accent-color mr-2"></i> Data Fundamentals (IBM)</li>
-                            <li class="mb-2"><i class="fas fa-certificate text-accent-color mr-2"></i> Information Technology Fundamentals (IBM)</li>
-                            <li class="mb-2"><i class="fas fa-certificate text-accent-color mr-2"></i> Web Development Fundamentals (IBM)</li>
-                        </ul>
-
-                        <div class="terminal mt-8">
-                            <span class="terminal-line terminal-prompt">cat mission.txt</span>
-                            <span class="terminal-line terminal-output">To secure digital landscapes and empower organizations through cutting-edge cybersecurity expertise and ethical hacking.</span>
-                        </div>
-                    </div>
+                <h1 class="text-5xl font-black glow-text mb-4 typewriter">G SUNIL KUMAR</h1>
+                <div class="terminal-text text-xl mb-4 inline-block">
+                    root@cybersec:~$ whoami
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievements Section -->
-    <section id="achievements" class="section">
-        <div class="container mx-auto max-w-5xl reveal">
-            <h2 class="text-4xl font-bold mb-8 glitch-text text-center">Achievements</h2>
-            <div class="glass-card">
-                <h3 class="text-2xl font-bold mb-6 text-center">Recognition from Tech Giants</h3>
-                <div class="flex flex-wrap justify-center mb-8">
-                    <div class="achievement-badge">
-                        <i class="fab fa-microsoft"></i> Microsoft Security Acknowledgment
-                    </div>
-                    <div class="achievement-badge">
-                        <i class="fab fa-twitter"></i> Twitter Security Hall of Fame
-                    </div>
-                    <div class="achievement-badge">
-                        <i class="fab fa-google"></i> Gmail Security Recognition
-                    </div>
-                    <div class="achievement-badge">
-                        <i class="fab fa-github"></i> GitHub Security Acknowledgment
-                    </div>
-                    <div class="achievement-badge">
-                        <i class="fas fa-network-wired"></i> Cisco Security Contributor
-                    </div>
-                </div>
-
-                <h3 class="text-2xl font-bold mb-6 text-center">Professional Journey</h3>
-                <div class="timeline">
-                    <div class="timeline-item timeline-item-left">
-                        <div class="timeline-content glass-card">
-                            <h4 class="font-bold">Technical Lead Cloud Club</h4>
-                            <p>Jain (Deemed-to-be University)</p>
-                            <p class="text-sm text-accent-color">2025 - Present</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item timeline-item-right">
-                        <div class="timeline-content glass-card">
-                            <h4 class="font-bold">Cybersecurity Education</h4>
-                            <p>Jain (Deemed-to-be University)</p>
-                            <p class="text-sm text-accent-color">2023 - 2027</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item timeline-item-left">
-                        <div class="timeline-content glass-card">
-                            <h4 class="font-bold">AWS R-1 Certification</h4>
-                            <p>Amazon Web Services</p>
-                            <p class="text-sm text-accent-color">2023</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item timeline-item-right">
-                        <div class="timeline-content glass-card">
-                            <h4 class="font-bold">IHack Academy Graduate</h4>
-                            <p>Advanced Ethical Hacking</p>
-                            <p class="text-sm text-accent-color">2022</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Media Feeds Section -->
-    <section id="social-feeds" class="section">
-        <div class="container mx-auto max-w-5xl reveal">
-            <h2 class="text-4xl font-bold mb-8 glitch-text text-center">Social Media</h2>
-
-            <!-- LinkedIn Preview -->
-            <div class="glass-card mb-8">
-                <h3 class="text-2xl font-bold mb-4"><i class="fab fa-linkedin social-icon"></i>LinkedIn Profile</h3>
-                <div class="social-preview">
-                    <div class="linkedin-preview">
-                        <div class="li-profile-header">
-                            <img src="https://media.licdn.com/dms/image/v2/D5603AQHUkehNM_D_Qw/profile-displayphoto-shrink_800_800/B56ZUuKB10HoAk-/0/1740236137393?e=1749686400&v=beta&t=9s9ok8nCLkYEHRFne5BiBCBPtFPI_h387VUE-pT96OY" alt="LinkedIn Profile" class="li-avatar">
-                            <div>
-                                <div class="li-name">G Sunil Kumar</div>
-                                <div class="li-headline">Certified Ethical Hacker | Cybersecurity Expert | IHack Academy Graduate | Cloud Technology | AWS R-1 | Technical Lead Cloud Club</div>
-                                <div class="li-company">Jain (Deemed-to-be University) · Bengaluru, Karnataka, India</div>
-                            </div>
-                        </div>
-                        
-                        <div class="li-section">
-                            <div class="li-section-title">About</div>
-                            <p>Hii, I am an Ethical Hacker, Cyber Security Consultant. I do Web Application Security, Information Security Training. My security findings have been recognized by tech giants like Microsoft, Twitter, Gmail, Cisco and many more. I am an utmost professional with superior customer service skills.</p>
-                        </div>
-                        
-                        <div class="li-section">
-                            <div class="li-section-title">Experience</div>
-                            <div class="li-section-item">
-                                <div class="li-section-item-title">Technical Lead Cloud Club</div>
-                                <div class="li-section-item-subtitle">Jain (Deemed-to-be University) · Bengaluru, Karnataka, India</div>
-                                <div class="li-section-item-subtitle">Feb 2025 - Present</div>
-                            </div>
-                        </div>
-                        
-                        <div class="li-section">
-                            <div class="li-section-title">Education</div>
-                            <div class="li-section-item">
-                                <div class="li-section-item-title">Jain (Deemed-to-be University)</div>
-                                <div class="li-section-item-subtitle">Cybersecurity, Cyber/Computer Forensics and Counterterrorism</div>
-                                <div class="li-section-item-subtitle">2023 - 2027</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-4 text-center">
-                    <a href="https://www.linkedin.com/in/g-sunil-kumar-33a58714b" target="_blank" class="cta-button">
-                        <i class="fab fa-linkedin mr-2"></i> View Full Profile
-                    </a>
-                </div>
-            </div>
-
-            <!-- GitHub Preview -->
-            <div class="glass-card mb-8">
-                <h3 class="text-2xl font-bold mb-4"><i class="fab fa-github social-icon"></i>GitHub Activity</h3>
-                <div class="social-preview">
-                    <div class="github-preview">
-                        <div class="gh-profile-header">
-                            <img src="https://avatars.githubusercontent.com/u/56576622" alt="GitHub Profile" class="gh-avatar">
-                            <div>
-                                <div class="gh-username">skuser404</div>
-                            </div>
-                        </div>
-                        
-                        <div class="gh-repo">
-                            <div class="gh-repo-name">skuser404/cyber-guardian-academy-ui-main</div>
-                            <div class="gh-repo-desc">A collection of cybersecurity tools and scripts for ethical hacking and penetration testing</div>
-                            <div class="gh-repo-stats">
-                                <div class="gh-repo-stat">
-                                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" fill="#8b949e" style="margin-right: 4px;">
-                                        <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694z"></path>
-                                    </svg>
-                                    24 stars
-                                </div>
-                                <div class="gh-repo-stat">
-                                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" fill="#8b949e" style="margin-right: 4px;">
-                                        <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
-                                    </svg>
-                                    8 forks
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="gh-repo">
-                            <div class="gh-repo-name">skuser404/VulnerabilityScanner</div>
-                            <div class="gh-repo-desc">Automated web application vulnerability scanner for security professionals</div>
-                            <div class="gh-repo-stats">
-                                <div class="gh-repo-stat">
-                                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" fill="#8b949e" style="margin-right: 4px;">
-                                        <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694z"></path>
-                                    </svg>
-                                    18 stars
-                                </div>
-                                <div class="gh-repo-stat">
-                                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" fill="#8b949e" style="margin-right: 4px;">
-                                        <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
-                                    </svg>
-                                    6 forks
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="gh-repo">
-                            <div class="gh-repo-name">skuser404/CloudSecurityFramework</div>
-                            <div class="gh-repo-desc">A comprehensive framework for securing cloud infrastructure and applications</div>
-                            <div class="gh-repo-stats">
-                                <div class="gh-repo-stat">
-                                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" fill="#8b949e" style="margin-right: 4px;">
-                                        <path fill-rule="evenodd" d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694z"></path>
-                                    </svg>
-                                    32 stars
-                                </div>
-                                <div class="gh-repo-stat">
-                                    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" fill="#8b949e" style="margin-right: 4px;">
-                                        <path fill-rule="evenodd" d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
-                                    </svg>
-                                    12 forks
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-4 text-center">
-                    <a href="https://github.com/skuser404" target="_blank" class="cta-button">
-                        <i class="fab fa-github mr-2"></i> View GitHub Profile
-                    </a>
-                </div>
-            </div>
-
-            <!-- Instagram Preview -->
-            <div class="glass-card">
-                <h3 class="text-2xl font-bold mb-4"><i class="fab fa-instagram social-icon"></i>Instagram</h3>
-                <div class="social-preview">
-                    <div class="instagram-preview">
-                        <div class="ig-header">
-                            <img src="https://media.licdn.com/dms/image/v2/D5603AQHUkehNM_D_Qw/profile-displayphoto-shrink_800_800/B56ZUuKB10HoAk-/0/1740236137393?e=1749686400&v=beta&t=9s9ok8nCLkYEHRFne5BiBCBPtFPI_h387VUE-pT96OY" alt="Instagram Profile" class="ig-avatar">
-                            <div class="ig-profile-info">
-                                <div class="ig-username">clicks_by_sunilkumar</div>
-                                <div class="ig-stats">
-                                    <div class="ig-stat"><span class="ig-stat-number">320</span> posts</div>
-                                    <div class="ig-stat"><span class="ig-stat-number">1.2k</span> followers</div>
-                                    <div class="ig-stat"><span class="ig-stat-number">600</span> following</div>
-                                </div>
-                                <div class="ig-bio">ᴄᴀᴘᴛᴜʀɪɴɢ ᴍᴏᴍᴇɴᴛꜱ, ᴛᴇʟʟɪɴɢ ꜱᴛᴏʀɪᴇꜱ 📸 | ᴇxᴘʟᴏʀᴇʀ ᴏꜰ ᴀʀᴛ, ᴀʀᴄʜɪᴛᴇᴄᴛᴜʀᴇ, ᴀɴᴅ ᴛʜᴇ ʙᴇᴀᴜᴛʏ ᴏꜰ ɪɴᴅɪᴀ 🇮🇳 | ᴛᴜʀɴɪɴɢ ꜰʀᴀᴍᴇꜱ ɪɴᴛᴏ ᴍᴇᴍᴏʀɪᴇꜱ | 📍ꜱᴏᴜᴛʜ ɪɴᴅɪᴀ</div>
-                            </div>
-                        </div>
-                        
-                        <div class="ig-grid">
-                            <div class="ig-post">
-                                <div style="background-color: #333; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-camera" style="color: #888; font-size: 24px;"></i>
-                                </div>
-                            </div>
-                            <div class="ig-post">
-                                <div style="background-color: #333; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-laptop-code" style="color: #888; font-size: 24px;"></i>
-                                </div>
-                            </div>
-                            <div class="ig-post">
-                                <div style="background-color: #333; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-shield-alt" style="color: #888; font-size: 24px;"></i>
-                                </div>
-                            </div>
-                            <div class="ig-post">
-                                <div style="background-color: #333; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-lock" style="color: #888; font-size: 24px;"></i>
-                                </div>
-                            </div>
-                            <div class="ig-post">
-                                <div style="background-color: #333; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-mountain" style="color: #888; font-size: 24px;"></i>
-                                </div>
-                            </div>
-                            <div class="ig-post">
-                                <div style="background-color: #333; height: 100%; display: flex; align-items: center; justify-content: center;">
-                                    <i class="fas fa-city" style="color: #888; font-size: 24px;"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-4 text-center">
-                    <a href="https://www.instagram.com/clicks_by_sunilkumar/" target="_blank" class="cta-button">
-                        <i class="fab fa-instagram mr-2"></i> Follow on Instagram
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container mx-auto max-w-5xl reveal">
-            <h2 class="text-4xl font-bold mb-8 glitch-text text-center">Contact Me</h2>
-            <div class="glass-card">
-                <div class="terminal mb-6">
-                    <span class="terminal-line terminal-prompt">establish_connection</span>
-                    <span class="terminal-line terminal-output">Initializing secure communication channels...</span>
-                    <span class="terminal-line terminal-output">Connection established. You may now contact G Sunil Kumar securely.</span>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <a href="mailto:gsunilkumar6018@gmail.com" class="glass-card hover:bg-opacity-20 hover:bg-accent-color transition-all duration-300 flex items-center">
-                        <i class="fas fa-envelope social-icon text-3xl"></i>
-                        <div>
-                            <h3 class="font-bold text-xl mb-1">Email</h3>
-                            <p class="text-text-secondary">gsunilkumar6018@gmail.com</p>
-                        </div>
-                    </a>
-                    
-                    <a href="tel:+917339586018" class="glass-card hover:bg-opacity-20 hover:bg-accent-color transition-all duration-300 flex items-center">
-                        <i class="far fa-phone-alt social-icon text-3xl"></i>
-                        <div>
-                            <h3 class="font-bold text-xl mb-1">Phone</h3>
-                            <p class="text-text-secondary">+91 73395 86018</p>
-                        </div>
-                    </a>
-                    
-                    <a href="https://www.linkedin.com/in/g-sunil-kumar-33a58714b" target="_blank" class="glass-card hover:bg-opacity-20 hover:bg-accent-color transition-all duration-300 flex items-center">
-                        <i class="fab fa-linkedin social-icon text-3xl"></i>
-                        <div>
-                            <h3 class="font-bold text-xl mb-1">LinkedIn</h3>
-                            <p class="text-text-secondary">linkedin.com/in/g-sunil-kumar-33a58714b</p>
-                        </div>
-                    </a>
-                    
-                    <a href="https://github.com/skuser404" target="_blank" class="glass-card hover:bg-opacity-20 hover:bg-accent-color transition-all duration-300 flex items-center">
-                        <i class="fab fa-github social-icon text-3xl"></i>
-                        <div>
-                            <h3 class="font-bold text-xl mb-1">GitHub</h3>
-                            <p class="text-text-secondary">github.com/skuser404</p>
-                        </div>
-                    </a>
-                    
-                    <a href="https://www.instagram.com/clicks_by_sunilkumar/" target="_blank" class="glass-card hover:bg-opacity-20 hover:bg-accent-color transition-all duration-300 flex items-center md:col-span-2">
-                        <i class="fab fa-instagram social-icon text-3xl"></i>
-                        <div>
-                            <h3 class="font-bold text-xl mb-1">Instagram</h3>
-                            <p class="text-text-secondary">instagram.com/clicks_by_sunilkumar</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="text-center mt-10">
-                <p class="text-text-secondary terminal-font">
-                    <span class="highlight">&copy; 2025 G SUNILKUMAR CYBER SECURITY</span><br>
-                    <span class="text-sm">Securing the digital realm one byte at a time</span>
+                <p class="text-2xl text-cyan-400 mb-6">
+                    Certified Ethical Hacker | Cybersecurity Enthusiast | Technical Lead Cloud Club
                 </p>
+                
+                <!-- Social Media Links -->
+                <div class="flex justify-center space-x-8 mb-8">
+                    <a href="https://www.linkedin.com/in/gsunilkumarcybersecurity/" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" target="_blank" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" target="_blank" class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="mailto:contact@gsunilkumar.dev" class="social-icon">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Left Column -->
+            <div class="space-y-6">
+                <!-- About Section -->
+                <div class="cyber-card section">
+                    <h2 class="text-2xl font-bold glow-text mb-4">
+                        <i class="fas fa-user-secret mr-2"></i>About Me
+                    </h2>
+                    <div class="terminal-text mb-4">
+                        gsunilkumar@security:~$ cat profile.txt
+                    </div>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        I'm Sunil Kumar Govindaraju, a passionate cybersecurity and cloud technology enthusiast pursuing B.Tech in Cloud Technology and Information Security at Jain University, Bangalore. With certifications including CEH and AWS R-1, and hands-on experience from IHack Academy, I thrive on securing systems and exploring ethical hacking.
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        As the Technical Lead of the Cloud Club, I actively organize Capture The Flag (CTF) events, lead web-based cybersecurity games, and contribute to awareness through interactive platforms.
+                    </p>
+                </div>
+
+                <!-- Experience Section -->
+                <div class="cyber-card section">
+                    <h2 class="text-2xl font-bold glow-text mb-4">
+                        <i class="fas fa-briefcase mr-2"></i>Experience
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-green-400 pl-4">
+                            <h3 class="text-xl font-semibold text-cyan-400">Technical Lead Cloud Club</h3>
+                            <p class="text-gray-400">Jain (Deemed-to-be University) | Feb 2025 - Present</p>
+                            <p class="text-gray-300 mt-2">Leading cloud computing initiatives and organizing cybersecurity events.</p>
+                        </div>
+                        <div class="border-l-4 border-green-400 pl-4">
+                            <h3 class="text-xl font-semibold text-cyan-400">Cybersecurity Intern</h3>
+                            <p class="text-gray-400">ApexPlanet Software Pvt. Ltd.</p>
+                            <p class="text-gray-300 mt-2">Enhancing backend and frontend skills using PHP, MySQL, and Flutter.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Section -->
+                <div class="cyber-card section">
+                    <h2 class="text-2xl font-bold glow-text mb-4">
+                        <i class="fas fa-graduation-cap mr-2"></i>Education
+                    </h2>
+                    <div class="border-l-4 border-green-400 pl-4">
+                        <h3 class="text-xl font-semibold text-cyan-400">B.Tech in Cloud Technology & Information Security</h3>
+                        <p class="text-gray-400">Jain (Deemed-to-be University) | 2023 - 2027</p>
+                        <p class="text-gray-300 mt-2">Specialization in Cyber/Computer Forensics and Counterterrorism</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="space-y-6">
+                <!-- Skills Section -->
+                <div class="cyber-card section">
+                    <h2 class="text-2xl font-bold glow-text mb-4">
+                        <i class="fas fa-code mr-2"></i>Technical Skills
+                    </h2>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Ethical Hacking</span>
+                                <span class="text-cyan-400">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Cybersecurity</span>
+                                <span class="text-cyan-400">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Cloud Security</span>
+                                <span class="text-cyan-400">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Web Development</span>
+                                <span class="text-cyan-400">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-300">Digital Forensics</span>
+                                <span class="text-cyan-400">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications Section -->
+                <div class="cyber-card section">
+                    <h2 class="text-2xl font-bold glow-text mb-4">
+                        <i class="fas fa-certificate mr-2"></i>Certifications
+                    </h2>
+                    <div class="flex flex-wrap">
+                        <span class="certification-badge">Certified Ethical Hacker (CEH)</span>
+                        <span class="certification-badge">AWS R-1</span>
+                        <span class="certification-badge">IBM Data Fundamentals</span>
+                        <span class="certification-badge">IBM IT Fundamentals</span>
+                        <span class="certification-badge">IBM Web Development</span>
+                        <span class="certification-badge">Operating Systems - Coursera</span>
+                    </div>
+                </div>
+
+                <!-- Specializations Section -->
+                <div class="cyber-card section">
+                    <h2 class="text-2xl font-bold glow-text mb-4">
+                        <i class="fas fa-shield-alt mr-2"></i>Specializations
+                    </h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-4 bg-black bg-opacity-50 rounded border border-green-400">
+                            <i class="fas fa-bug text-3xl text-green-400 mb-2"></i>
+                            <p class="text-gray-300">Penetration Testing</p>
+                        </div>
+                        <div class="text-center p-4 bg-black bg-opacity-50 rounded border border-green-400">
+                            <i class="fas fa-cloud text-3xl text-cyan-400 mb-2"></i>
+                            <p class="text-gray-300">Cloud Security</p>
+                        </div>
+                        <div class="text-center p-4 bg-black bg-opacity-50 rounded border border-green-400">
+                            <i class="fas fa-search text-3xl text-purple-400 mb-2"></i>
+                            <p class="text-gray-300">Digital Forensics</p>
+                        </div>
+                        <div class="text-center p-4 bg-black bg-opacity-50 rounded border border-green-400">
+                            <i class="fas fa-flag text-3xl text-red-400 mb-2"></i>
+                            <p class="text-gray-300">CTF Organizer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="cyber-card section mt-8">
+            <h2 class="text-2xl font-bold glow-text mb-4">
+                <i class="fas fa-project-diagram mr-2"></i>Current Projects
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-black bg-opacity-50 p-4 rounded border border-green-400">
+                    <h3 class="text-xl font-semibold text-cyan-400 mb-2">Digital DNA Identity System</h3>
+                    <p class="text-gray-300">Innovative blockchain-based identity verification system.</p>
+                </div>
+                <div class="bg-black bg-opacity-50 p-4 rounded border border-green-400">
+                    <h3 class="text-xl font-semibold text-cyan-400 mb-2">Universal Transport Card Portal</h3>
+                    <p class="text-gray-300">Smart transportation solution with integrated security features.</p>
+                </div>
+                <div class="bg-black bg-opacity-50 p-4 rounded border border-green-400">
+                    <h3 class="text-xl font-semibold text-cyan-400 mb-2">IoT Security Framework</h3>
+                    <p class="text-gray-300">Comprehensive security solutions for IoT devices and networks.</p>
+                </div>
+                <div class="bg-black bg-opacity-50 p-4 rounded border border-green-400">
+                    <h3 class="text-xl font-semibold text-cyan-400 mb-2">Real-time Sign Language Detection</h3>
+                    <p class="text-gray-300">AI-powered system using hybrid algorithms for accessibility.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="cyber-card section text-center">
+            <h2 class="text-2xl font-bold glow-text mb-4">
+                <i class="fas fa-terminal mr-2"></i>Initialize Contact Protocol
+            </h2>
+            <div class="terminal-text mb-4 inline-block">
+                gsunilkumar@security:~$ ./contact.sh --collaborate
+            </div>
+            <p class="text-gray-300 mb-6">Ready to secure the digital world together? Let's connect!</p>
+            <div class="space-x-4">
+                <a href="https://www.linkedin.com/in/gsunilkumarcybersecurity/" target="_blank" class="cyber-button">
+                    <i class="fab fa-linkedin mr-2"></i>Connect on LinkedIn
+                </a>
+                <a href="mailto:contact@gsunilkumar.dev" class="cyber-button">
+                    <i class="fas fa-envelope mr-2"></i>Send Encrypted Message
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 text-gray-500">
+            <div class="terminal-text inline-block mb-2">
+                © 2025 G SUNIL KUMAR | Ethical Hacker & Cybersecurity Expert
+            </div>
+            <p class="text-sm">Securing digital frontiers, one vulnerability at a time.</p>
+        </div>
+    </div>
+
     <script>
-        // Loading animation
-        const progress = document.getElementById('loading-progress');
-        const percentage = document.getElementById('loading-percentage');
-        const loadingScreen = document.getElementById('loading-screen');
-        
-        let width = 0;
-        const interval = setInterval(() => {
-            if (width >= 100) {
-                clearInterval(interval);
-                setTimeout(() => {
-                    loadingScreen.classList.add('hidden');
-                }, 500);
-            } else {
-                width++;
-                progress.style.width = width + '%';
-                percentage.textContent = width + '%';
-            }
-        }, 30);
-
-        // Scroll reveal animation
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal');
+        // Matrix Rain Effect
+        function createMatrixRain() {
+            const matrixContainer = document.getElementById('matrixRain');
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
             
-            for (let i = 0; i < reveals.length; i++) {
-                const windowHeight = window.innerHeight;
-                const elementTop = reveals[i].getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add('active');
-                }
+            for (let i = 0; i < 50; i++) {
+                const char = document.createElement('div');
+                char.className = 'matrix-char';
+                char.textContent = chars[Math.floor(Math.random() * chars.length)];
+                char.style.left = Math.random() * 100 + '%';
+                char.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                char.style.animationDelay = Math.random() * 2 + 's';
+                matrixContainer.appendChild(char);
             }
         }
 
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
+        // Particle System
+        function createParticles() {
+            const particleCount = 30;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                document.body.appendChild(particle);
+            }
+        }
 
-        // Terminal text animation
-        const terminalName = document.getElementById('terminal-name');
-        const terminalStatus = document.getElementById('terminal-status');
-        
-        function typeText(element, text, speed = 50) {
-            let i = 0;
-            element.textContent = '';
-            const typing = setInterval(() => {
-                if (i < text.length) {
-                    element.textContent += text.charAt(i);
+        // Glitch Effect for Name
+        function addGlitchEffect() {
+            const nameElement = document.querySelector('.typewriter');
+            setInterval(() => {
+                nameElement.style.textShadow = `
+                    ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px 0 #ff0000,
+                    ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px 0 #00ff00,
+                    ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px 0 #0000ff
+                `;
+                setTimeout(() => {
+                    nameElement.style.textShadow = '0 0 5px var(--cyber-green), 0 0 10px var(--cyber-green), 0 0 20px var(--cyber-green), 0 0 40px var(--cyber-green)';
+                }, 100);
+            }, 3000);
+        }
+
+        // Skill Bar Animation
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach((bar, index) => {
+                setTimeout(() => {
+                    bar.style.width = bar.style.width;
+                }, index * 200);
+            });
+        }
+
+        // Terminal Typing Effect
+        function terminalTypeEffect() {
+            const terminals = document.querySelectorAll('.terminal-text');
+            terminals.forEach(terminal => {
+                const text = terminal.textContent;
+                terminal.textContent = '';
+                let i = 0;
+                const typeInterval = setInterval(() => {
+                    terminal.textContent += text[i];
                     i++;
-                } else {
-                    clearInterval(typing);
-                }
-            }, speed);
-        }
-        
-        setTimeout(() => {
-            typeText(terminalName, 'G Sunil Kumar');
-            setTimeout(() => {
-                typeText(terminalStatus, 'Cybersecurity Expert | Ethical Hacker', 30);
-            }, 1500);
-        }, 3000);
-
-        // Particles.js initialization
-        particlesJS('particles-js', {
-            "particles": {
-                "number": {
-                    "value": 80,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
+                    if (i >= text.length) {
+                        clearInterval(typeInterval);
                     }
-                },
-                "color": {
-                    "value": "#64ffda"
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 2,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#64ffda",
-                    "opacity": 0.4,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 2,
-                    "direction": "none",
-                    "random": true,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": true,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 140,
-                        "line_linked": {
-                            "opacity": 1
-                        }
-                    },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
-                    }
-                }
-            },
-            "retina_detect": true
-        });
-
-        // Matrix rain animation
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
-
-        // Set canvas dimensions
-        function setCanvasDimensions() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+                }, 50);
+            });
         }
 
-        setCanvasDimensions();
-        window.addEventListener('resize', setCanvasDimensions);
+        // Initialize Effects
+        document.addEventListener('DOMContentLoaded', function() {
+            createMatrixRain();
+            createParticles();
+            addGlitchEffect();
+            setTimeout(animateSkillBars, 1000);
+            
+            // Add hover effects to cards
+            const cards = document.querySelectorAll('.cyber-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) rotateX(5deg)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) rotateX(0)';
+                });
+            });
 
-        // Matrix characters
-        const matrix = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
-        const matrixChars = matrix.split('');
-
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-
-        // Array to track the y position of each column
-        const drops = [];
-        for (let i = 0; i < columns; i++) {
-            drops[i] = 1;
-        }
-
-        function drawMatrix() {
-            // Semi-transparent black to create fade effect
-            ctx.fillStyle = 'rgba(10, 25, 47, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Green text
-            ctx.fillStyle = '#64ffda';
-            ctx.font = fontSize + 'px monospace';
-
-            // Draw characters
-            for (let i = 0; i < drops.length; i++) {
-                // Get random character
-                const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
-                
-                // Draw the character
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                
-                // Reset to top when reaching bottom or randomly
-                if (drops[i] * fontSize > canvas.height || Math.random() > 0.98) {
-                    drops[i] = 0;
-                }
-                
-                // Move down
-                drops[i]++;
-            }
-        }
-
-        // Run the animation
-        setInterval(drawMatrix, 50);
-
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
+            // Add click effect to social icons
+            const socialIcons = document.querySelectorAll('.social-icon');
+            socialIcons.forEach(icon => {
+                icon.addEventListener('click', function() {
+                    this.style.animation = 'none';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 10);
+                });
             });
         });
+
+        // Continuous Matrix Animation
+        setInterval(() => {
+            const matrixContainer = document.getElementById('matrixRain');
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            
+            if (matrixContainer.children.length < 100) {
+                const char = document.createElement('div');
+                char.className = 'matrix-char';
+                char.textContent = chars[Math.floor(Math.random() * chars.length)];
+                char.style.left = Math.random() * 100 + '%';
+                char.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                matrixContainer.appendChild(char);
+                
+                setTimeout(() => {
+                    char.remove();
+                }, 5000);
+            }
+        }, 500);
     </script>
 </body>
 </html>
