@@ -3,18 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G SUNIL KUMAR - Elite Cyber Security Expert</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Sunil Kumar Govindaraju - Cybersecurity & Cloud Technology Portfolio</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
     <style>
         :root {
-            --cyber-green: #00ff41;
-            --cyber-blue: #0affff;
-            --cyber-red: #ff073a;
-            --cyber-purple: #bf00ff;
-            --dark-bg: #0a0a0a;
-            --darker-bg: #050505;
+            --primary-color: #00f5ff;
+            --secondary-color: #0080ff;
+            --accent-color: #ff0080;
+            --bg-dark: #0a0a0a;
+            --bg-card-dark: rgba(255, 255, 255, 0.1);
+            --text-light: #ffffff;
+            --text-gray: #b0b0b0;
+            --bg-light: #ffffff;
+            --bg-card-light: rgba(0, 0, 0, 0.05);
+            --text-dark: #1a1a1a;
+            --matrix-green: #00ff41;
         }
 
         * {
@@ -24,644 +36,1818 @@
         }
 
         body {
-            font-family: 'Orbitron', monospace;
-            background: var(--dark-bg);
-            color: var(--cyber-green);
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
             overflow-x: hidden;
-            min-height: 100vh;
-            position: relative;
+            transition: all 0.3s ease;
         }
 
-        .cyber-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(0, 255, 65, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(10, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(191, 0, 255, 0.1) 0%, transparent 50%),
-                linear-gradient(135deg, #0a0a0a 0%, #050505 100%);
+        .light-mode {
+            --bg-dark: #f8fafc;
+            --bg-card-dark: rgba(0, 0, 0, 0.05);
+            --text-light: #1a1a1a;
+            --text-gray: #64748b;
         }
 
-        .matrix-bg {
+        .hacker-mode {
+            --primary-color: var(--matrix-green);
+            --secondary-color: var(--matrix-green);
+            --accent-color: var(--matrix-green);
+            background: #000000 !important;
+            color: var(--matrix-green) !important;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: var(--bg-card-dark);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+
+        /* Particle Background */
+        #particles {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.1;
-            pointer-events: none;
+            opacity: 0.6;
         }
 
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: var(--cyber-green);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            50% { transform: translateY(-100px) rotate(180deg); }
-        }
-
-        .glow-text {
-            text-shadow: 
-                0 0 5px var(--cyber-green),
-                0 0 10px var(--cyber-green),
-                0 0 20px var(--cyber-green),
-                0 0 40px var(--cyber-green);
-            animation: pulse-glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes pulse-glow {
-            from { text-shadow: 0 0 5px var(--cyber-green), 0 0 10px var(--cyber-green), 0 0 20px var(--cyber-green), 0 0 40px var(--cyber-green); }
-            to { text-shadow: 0 0 10px var(--cyber-green), 0 0 20px var(--cyber-green), 0 0 30px var(--cyber-green), 0 0 60px var(--cyber-green); }
-        }
-
-        .cyber-card {
-            background: linear-gradient(135deg, rgba(0, 255, 65, 0.1) 0%, rgba(10, 255, 255, 0.05) 100%);
-            border: 1px solid rgba(0, 255, 65, 0.3);
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cyber-card::before {
-            content: '';
-            position: absolute;
+        /* Matrix Rain Effect */
+        .matrix-rain {
+            position: fixed;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
-            transition: left 0.5s;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
-        .cyber-card:hover::before {
-            left: 100%;
+        .matrix-rain.active {
+            opacity: 0.3;
         }
 
-        .cyber-card:hover {
-            border-color: var(--cyber-green);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
-            transform: translateY(-5px);
+        .matrix-column {
+            position: absolute;
+            top: -100%;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--matrix-green);
+            animation: matrix-fall linear infinite;
         }
 
-        .cyber-button {
-            background: linear-gradient(45deg, transparent, rgba(0, 255, 65, 0.1));
-            border: 1px solid var(--cyber-green);
-            color: var(--cyber-green);
-            padding: 12px 24px;
-            border-radius: 4px;
-            text-decoration: none;
+        @keyframes matrix-fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Terminal Popup */
+        .terminal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #000;
+            color: var(--matrix-green);
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            z-index: 1000;
+            min-width: 400px;
+            box-shadow: 0 0 50px rgba(0, 255, 65, 0.3);
+            opacity: 0;
+            animation: terminalFadeIn 0.5s ease forwards;
+        }
+
+        @keyframes terminalFadeIn {
+            to { opacity: 1; }
+        }
+
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--matrix-green);
+        }
+
+        .terminal-close {
+            cursor: pointer;
+            color: #ff4444;
+            font-size: 18px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1rem 0;
             transition: all 0.3s ease;
-            display: inline-block;
+        }
+
+        .navbar.scrolled {
+            background: var(--bg-card-dark);
+            backdrop-filter: blur(20px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .typing-animation {
+            overflow: hidden;
+            border-right: 3px solid var(--primary-color);
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color) }
+        }
+
+        /* Skills */
+        .skill-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 245, 255, 0.2);
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .cert-card {
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
 
-        .cyber-button:hover {
-            background: rgba(0, 255, 65, 0.1);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
-            color: #000;
-            background-color: var(--cyber-green);
+        .cert-card:hover {
+            transform: scale(1.05);
         }
 
-        .terminal-text {
-            font-family: 'Fira Code', monospace;
-            color: var(--cyber-green);
-            background: rgba(0, 0, 0, 0.8);
-            padding: 4px 8px;
-            border-radius: 4px;
-            border-left: 3px solid var(--cyber-green);
-        }
-
-        .skill-bar {
-            background: rgba(0, 0, 0, 0.5);
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .skill-progress {
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, var(--cyber-green), var(--cyber-blue));
-            border-radius: 4px;
-            transition: width 2s ease;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
             position: relative;
         }
 
-        .skill-progress::after {
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
             content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            box-shadow: 0 0 20px var(--primary-color);
+        }
+
+        /* Contact Form */
+        .contact-form input,
+        .contact-form textarea {
+            background: var(--bg-card-dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            border-radius: 10px;
+            padding: 1rem;
+            width: 100%;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 245, 255, 0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 200;
+            background: var(--bg-card-dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .terminal {
+                min-width: 90%;
+                margin: 0 20px;
+            }
+
+            .hero {
+                padding: 0 1rem;
+                text-align: center;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .timeline::before {
+                left: 0.5rem;
+            }
+
+            .timeline-item::before {
+                left: -1.5rem;
+            }
+        }
+
+        /* Animation utilities */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Project Cards */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-overlay {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            animation: shine 2s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .typewriter {
-            overflow: hidden;
-            border-right: 2px solid var(--cyber-green);
-            white-space: nowrap;
-            margin: 0 auto;
-            animation: typing 3s steps(30, end), blink-caret 0.75s step-end infinite;
-        }
-
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: var(--cyber-green); }
-        }
-
-        .social-icon {
-            font-size: 2rem;
+            background: linear-gradient(135deg, rgba(0, 245, 255, 0.8), rgba(0, 128, 255, 0.8));
+            opacity: 0;
             transition: all 0.3s ease;
-            color: var(--cyber-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-card-dark);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Social Icons */
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-card-dark);
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0 10px;
         }
 
         .social-icon:hover {
-            transform: scale(1.2) rotate(360deg);
-            color: var(--cyber-blue);
-            text-shadow: 0 0 20px currentColor;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 245, 255, 0.3);
+            background: var(--primary-color);
+            color: white;
         }
 
-        .certification-badge {
-            background: linear-gradient(45deg, rgba(0, 255, 65, 0.1), rgba(10, 255, 255, 0.1));
-            border: 1px solid var(--cyber-green);
-            border-radius: 50px;
-            padding: 8px 16px;
-            font-size: 0.9rem;
-            margin: 4px;
-            display: inline-block;
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0;
             transition: all 0.3s ease;
+            z-index: 100;
         }
 
-        .certification-badge:hover {
-            background: var(--cyber-green);
-            color: #000;
-            transform: scale(1.05);
+        .scroll-top.visible {
+            opacity: 1;
         }
 
-        .matrix-rain {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .matrix-char {
-            position: absolute;
-            font-family: 'Fira Code', monospace;
-            font-size: 14px;
-            color: var(--cyber-green);
-            opacity: 0.3;
-            animation: matrix-fall linear infinite;
-        }
-
-        @keyframes matrix-fall {
-            0% { 
-                transform: translateY(-100vh); 
-                opacity: 0; 
-            }
-            10% { 
-                opacity: 0.3; 
-            }
-            90% { 
-                opacity: 0.3; 
-            }
-            100% { 
-                transform: translateY(100vh); 
-                opacity: 0; 
-            }
-        }
-
-        .cyber-grid {
-            background-image: 
-                linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            z-index: -1;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section {
-            margin-bottom: 3rem;
-            padding: 2rem;
-            position: relative;
-        }
-
-        @media print {
-            body { font-size: 12px; }
-            .container { padding: 1rem; }
-            .section { margin-bottom: 1.5rem; padding: 1rem; }
+        .scroll-top:hover {
+            transform: translateY(-5px);
         }
     </style>
 </head>
 <body>
-    <div class="cyber-bg"></div>
-    <div class="cyber-grid"></div>
-    <div class="matrix-bg">
-        <div class="matrix-rain" id="matrixRain"></div>
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-sun" id="themeIcon"></i>
     </div>
 
-    <div class="container">
-        <!-- Header Section -->
-        <div class="section">
-            <div class="text-center mb-8">
-                <div class="mb-6">
-                    <img src="https://cdn1.genspark.ai/user-upload-image/crawler_linkedin_profile_thumbnails/91a318d4-18d8-3fb4-a370-6087210769e9" 
-                         alt="G SUNIL KUMAR" 
-                         class="w-32 h-32 rounded-full mx-auto border-4 border-green-400 shadow-lg" 
-                         style="box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);">
+    <!-- Matrix Rain Effect -->
+    <div class="matrix-rain" id="matrixRain"></div>
+
+    <!-- Particle Background -->
+    <canvas id="particles"></canvas>
+
+    <!-- Terminal Popup -->
+    <div class="terminal" id="terminal">
+        <div class="terminal-header">
+            <span>Terminal - Sunil's Portfolio</span>
+            <span class="terminal-close" onclick="closeTerminal()">&times;</span>
+        </div>
+        <div id="terminalContent">
+            <div>> Initializing portfolio system...</div>
+            <div>> Loading security protocols...</div>
+            <div>> Establishing secure connection...</div>
+            <div>> Welcome to Sunil Kumar's Cybersecurity Portfolio!</div>
+            <div>> Type 'help' for available commands</div>
+            <div>> <span class="cursor">_</span></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass" id="navbar">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold font-mono">
+                    SK<span class="text-cyan-400">_</span>
                 </div>
-                <h1 class="text-5xl font-black glow-text mb-4 typewriter">G SUNIL KUMAR</h1>
-                <div class="terminal-text text-xl mb-4 inline-block">
-                    root@cybersec:~$ whoami
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-cyan-400 transition-colors">Home</a>
+                    <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+                    <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
+                    <a href="#certifications" class="hover:text-cyan-400 transition-colors">Certifications</a>
+                    <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+                    <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
                 </div>
-                <p class="text-2xl text-cyan-400 mb-6">
-                    Certified Ethical Hacker | Cybersecurity Enthusiast | Technical Lead Cloud Club
+                <div class="flex items-center space-x-4">
+                    <button onclick="toggleHackerMode()" class="btn-outline btn">
+                        <i class="fas fa-terminal mr-2"></i>Hacker Mode
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                <div class="lg:w-1/2 fade-in">
+                    <h1 class="text-5xl lg:text-7xl font-bold mb-6">
+                        Hi, I'm <span class="text-cyan-400">Sunil Kumar</span>
+                    </h1>
+                    <div class="text-2xl lg:text-3xl mb-6 typing-animation">
+                        Securing the future, one line of code at a time.
+                    </div>
+                    <p class="text-xl text-gray-400 mb-8 max-w-2xl">
+                        B.Tech student specializing in Cloud Technology & Information Security at Jain University, Bangalore. 
+                        Passionate about cybersecurity, ethical hacking, and cutting-edge technology.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contact" class="btn btn-primary">
+                            <i class="fas fa-envelope mr-2"></i>Get In Touch
+                        </a>
+                        <a href="https://github.com/skuser404" target="_blank" class="btn btn-outline">
+                            <i class="fab fa-github mr-2"></i>GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/gsunilkumarcybersecurity" target="_blank" class="btn btn-outline">
+                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 mt-12 lg:mt-0 slide-in-right">
+                    <div class="glass p-8 rounded-3xl">
+                        <div class="w-64 h-64 mx-auto bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center text-6xl text-white mb-6">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm text-gray-400 mb-2">Current Status</div>
+                            <div class="text-lg font-semibold">🔒 Securing Digital Assets</div>
+                            <div class="text-sm text-gray-400 mt-2">📍 Bangalore, India</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">About Me</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="slide-in-left">
+                    <div class="glass p-8 rounded-3xl">
+                        <h3 class="text-2xl font-bold mb-6 text-cyan-400">Who I Am</h3>
+                        <p class="text-lg text-gray-300 mb-6">
+                            I'm a passionate cybersecurity enthusiast and B.Tech student specializing in Cloud Technology and Information Security 
+                            at Jain University, Bangalore. My journey in the digital security realm began with a fascination for understanding 
+                            how systems work and how to protect them from evolving threats.
+                        </p>
+                        <p class="text-lg text-gray-300 mb-6">
+                            With expertise spanning ethical hacking, cloud security, IoT development, and full-stack web development, 
+                            I'm committed to building secure, scalable solutions that protect digital assets and user privacy.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-sm">Ethical Hacker</span>
+                            <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm">Cloud Security</span>
+                            <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-sm">IoT Developer</span>
+                            <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">Full Stack</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide-in-right">
+                    <div class="glass p-8 rounded-3xl">
+                        <h3 class="text-2xl font-bold mb-6 text-cyan-400">Education & Contact</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-graduation-cap text-cyan-400 w-6"></i>
+                                <div class="ml-4">
+                                    <div class="font-semibold">B.Tech in Cloud Technology & Information Security</div>
+                                    <div class="text-gray-400">Jain University, Bangalore</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-cyan-400 w-6"></i>
+                                <div class="ml-4">
+                                    <a href="mailto:gsunilkumar@myyahoo.com" class="hover:text-cyan-400 transition-colors">
+                                        gsunilkumar@myyahoo.com
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-cyan-400 w-6"></i>
+                                <div class="ml-4">
+                                    <a href="tel:+917339586018" class="hover:text-cyan-400 transition-colors">
+                                        +91 7339586018
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-cyan-400 w-6"></i>
+                                <div class="ml-4">Bangalore, India</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-black bg-opacity-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">Technical Skills</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Programming Languages -->
+                <div class="skill-card glass p-8 rounded-3xl fade-in">
+                    <div class="text-3xl mb-4 text-cyan-400">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Programming</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span>HTML/CSS</span>
+                            <span class="text-cyan-400">95%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-cyan-400 to-blue-600 h-2 rounded-full" style="width: 95%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>JavaScript</span>
+                            <span class="text-cyan-400">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-cyan-400 to-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Python</span>
+                            <span class="text-cyan-400">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-cyan-400 to-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>PHP</span>
+                            <span class="text-cyan-400">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-cyan-400 to-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>React</span>
+                            <span class="text-cyan-400">75%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-cyan-400 to-blue-600 h-2 rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend & Database -->
+                <div class="skill-card glass p-8 rounded-3xl fade-in">
+                    <div class="text-3xl mb-4 text-green-400">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Backend & Database</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span>Node.js</span>
+                            <span class="text-green-400">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-green-400 to-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>MySQL</span>
+                            <span class="text-green-400">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-green-400 to-blue-600 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Firebase</span>
+                            <span class="text-green-400">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-green-400 to-blue-600 h-2 rounded-full" style="width: 80%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Oracle SQL</span>
+                            <span class="text-green-400">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-green-400 to-blue-600 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cybersecurity -->
+                <div class="skill-card glass p-8 rounded-3xl fade-in">
+                    <div class="text-3xl mb-4 text-red-400">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Cybersecurity</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span>Kali Linux</span>
+                            <span class="text-red-400">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-red-400 to-pink-600 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Ethical Hacking</span>
+                            <span class="text-red-400">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-red-400 to-pink-600 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Wireshark</span>
+                            <span class="text-red-400">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-red-400 to-pink-600 h-2 rounded-full" style="width: 80%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Burp Suite</span>
+                            <span class="text-red-400">75%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-red-400 to-pink-600 h-2 rounded-full" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cloud Technologies -->
+                <div class="skill-card glass p-8 rounded-3xl fade-in">
+                    <div class="text-3xl mb-4 text-blue-400">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Cloud & Identity</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span>AWS</span>
+                            <span class="text-blue-400">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-blue-400 to-purple-600 h-2 rounded-full" style="width: 80%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Microsoft Azure</span>
+                            <span class="text-blue-400">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-blue-400 to-purple-600 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Microsoft 365</span>
+                            <span class="text-blue-400">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-blue-400 to-purple-600 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Identity Management</span>
+                            <span class="text-blue-400">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-blue-400 to-purple-600 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IoT & Hardware -->
+                <div class="skill-card glass p-8 rounded-3xl fade-in">
+                    <div class="text-3xl mb-4 text-purple-400">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">IoT & Hardware</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span>ESP32</span>
+                            <span class="text-purple-400">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-purple-400 to-pink-600 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Arduino</span>
+                            <span class="text-purple-400">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-purple-400 to-pink-600 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>RFID</span>
+                            <span class="text-purple-400">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-purple-400 to-pink-600 h-2 rounded-full" style="width: 80%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Sensors (HC-SR04, Bluetooth)</span>
+                            <span class="text-purple-400">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-purple-400 to-pink-600 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Others -->
+                <div class="skill-card glass p-8 rounded-3xl fade-in">
+                    <div class="text-3xl mb-4 text-yellow-400">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Tools & Others</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span>Git & GitHub</span>
+                            <span class="text-yellow-400">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-yellow-400 to-orange-600 h-2 rounded-full" style="width: 90%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Digital Forensics</span>
+                            <span class="text-yellow-400">75%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-yellow-400 to-orange-600 h-2 rounded-full" style="width: 75%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Network Security</span>
+                            <span class="text-yellow-400">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-yellow-400 to-orange-600 h-2 rounded-full" style="width: 80%"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Penetration Testing</span>
+                            <span class="text-yellow-400">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-yellow-400 to-orange-600 h-2 rounded-full" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">Certifications & Achievements</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Professional certifications and achievements that validate my expertise in cybersecurity, 
+                    cloud technologies, and software development.
                 </p>
-                
-                <!-- Social Media Links -->
-                <div class="flex justify-center space-x-8 mb-8">
-                    <a href="https://www.linkedin.com/in/gsunilkumarcybersecurity/" target="_blank" class="social-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/skuser404" target="_blank" class="social-icon">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.instagram.com/clicks_by_sunilkumar/?hl=en" target="_blank" class="social-icon">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="mailto:contact@gsunilkumar.dev" class="social-icon">
-                        <i class="fas fa-envelope"></i>
-                    </a>
+            </div>
+
+            <div class="cert-grid">
+                <!-- EC-Council EHE Certificate -->
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert1')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-shield-alt text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Ethical Hacking Essentials (EHE)</h3>
+                            <p class="text-sm text-gray-400">EC-Council • March 2024</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300">Certificate No: 306758 - Comprehensive ethical hacking fundamentals and security assessment techniques.</p>
+                </div>
+
+                <!-- Digital Forensics Certificate -->
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert2')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-search text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Digital Forensics with Kali Linux</h3>
+                            <p class="text-sm text-gray-400">ITronix Solutions • September 2022</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300">Advanced digital forensics techniques using Kali Linux tools and methodologies.</p>
+                </div>
+
+                <!-- CTF Participation -->
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert3')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-flag text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Indomitus Capture The Flag</h3>
+                            <p class="text-sm text-gray-400">Manipal Institute • March 2025</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300">Participated in cybersecurity CTF competition as part of PING 2.0.2.5 event.</p>
+                </div>
+
+                <!-- SQL Certifications -->
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert4')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-database text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">SQL DML Commands & Operations</h3>
+                            <p class="text-sm text-gray-400">CareerNinja • October 2022</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300">Comprehensive SQL database management and data manipulation language expertise.</p>
+                </div>
+
+                <!-- Oracle SQL Certificate -->
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert5')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-database text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Comprehensive Oracle SQL Concepts</h3>
+                            <p class="text-sm text-gray-400">EDUCBA • February 2024</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300">Advanced Oracle SQL programming and database design principles.</p>
+                </div>
+
+                <!-- Ethical Hacking University -->
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert6')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-graduation-cap text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Introduction to Ethical Hacking</h3>
+                            <p class="text-sm text-gray-400">Ethical Hacking University • October 2022</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300">Foundational ethical hacking concepts and penetration testing methodologies.</p>
+                </div>
+
+                <!-- Microsoft Azure Certifications -->
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert7')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                            <i class="fab fa-microsoft text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Azure Identity Management</h3>
+                            <p class="text-sm text-gray-400">Microsoft Learn • 2023</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300">Multiple Azure certifications in identity protection, access management, and security.</p>
+                </div>
+
+                <!-- Intel AI Program -->
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert8')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-brain text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">AI For All Program</h3>
+                            <p class="text-sm text-gray-400">Intel • September 2022</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300">Artificial Intelligence awareness and appreciation program completion.</p>
+                </div>
+
+                <!-- TryHackMe Badge -->
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert9')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-400 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-terminal text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">OhSINT Badge</h3>
+                            <p class="text-sm text-gray-400">TryHackMe • Ongoing</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300">OSINT (Open Source Intelligence) techniques and investigation skills.</p>
+                </div>
+
+                <!-- Python Programming -->
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert10')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mr-4">
+                            <i class="fab fa-python text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Python Programming</h3>
+                            <p class="text-sm text-gray-400">eMexo Technologies • December 2022</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300">Comprehensive Python programming language certification and practical applications.</p>
+                </div>
+
+                <!-- IHack Academy -->
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert11')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user-secret text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Ethical Hacking: Beginner to Advanced</h3>
+                            <p class="text-sm text-gray-400">IHack Academy • January 2023</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300">ISO certified comprehensive ethical hacking course with advanced techniques.</p>
+                </div>
+
+                <!-- UNESCO Certificate -->
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert12')">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-globe text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">SEEK Course - Empathy & Kindness</h3>
+                            <p class="text-sm text-gray-400">UNESCO MGIEP • March 2024</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300">Self-Directed Emotional Learning for Empathy and Kindness program completion.</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <!-- Left Column -->
-            <div class="space-y-6">
-                <!-- About Section -->
-                <div class="cyber-card section">
-                    <h2 class="text-2xl font-bold glow-text mb-4">
-                        <i class="fas fa-user-secret mr-2"></i>About Me
-                    </h2>
-                    <div class="terminal-text mb-4">
-                        gsunilkumar@security:~$ cat profile.txt
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-black bg-opacity-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">Featured Projects</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    A showcase of my latest work in cybersecurity, web development, and IoT solutions.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card glass rounded-3xl overflow-hidden fade-in">
+                    <div class="h-48 bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-6xl text-white"></i>
                     </div>
-                    <p class="text-gray-300 leading-relaxed mb-4">
-                        I'm Sunil Kumar Govindaraju, a passionate cybersecurity and cloud technology enthusiast pursuing B.Tech in Cloud Technology and Information Security at Jain University, Bangalore. With certifications including CEH and AWS R-1, and hands-on experience from IHack Academy, I thrive on securing systems and exploring ethical hacking.
+                    <div class="project-overlay">
+                        <h3 class="text-xl font-bold mb-2">Security Assessment Tool</h3>
+                        <p class="text-center mb-4">Automated vulnerability scanning and reporting system</p>
+                        <div class="space-x-2">
+                            <span class="px-2 py-1 bg-white bg-opacity-20 rounded text-xs">Python</span>
+                            <span class="px-2 py-1 bg-white bg-opacity-20 rounded text-xs">Kali Linux</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Security Assessment Tool</h3>
+                        <p class="text-gray-400 mb-4">Developed an automated security assessment tool for network vulnerability scanning and comprehensive reporting.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-sm">Kali Linux</span>
+                            <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">Nmap</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fab fa-github mr-1"></i>Code
+                            </a>
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fas fa-external-link-alt mr-1"></i>Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass rounded-3xl overflow-hidden fade-in">
+                    <div class="h-48 bg-gradient-to-br from-green-400 to-blue-600 flex items-center justify-center">
+                        <i class="fas fa-microchip text-6xl text-white"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <h3 class="text-xl font-bold mb-2">IoT Security System</h3>
+                        <p class="text-center mb-4">Smart security system with ESP32 and real-time monitoring</p>
+                        <div class="space-x-2">
+                            <span class="px-2 py-1 bg-white bg-opacity-20 rounded text-xs">ESP32</span>
+                            <span class="px-2 py-1 bg-white bg-opacity-20 rounded text-xs">Arduino</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">IoT Security System</h3>
+                        <p class="text-gray-400 mb-4">Built a comprehensive IoT security system using ESP32 with RFID access control and real-time monitoring.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-purple-400 bg-opacity-20 text-purple-400 rounded-full text-sm">ESP32</span>
+                            <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">Arduino</span>
+                            <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm">RFID</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fab fa-github mr-1"></i>Code
+                            </a>
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fas fa-external-link-alt mr-1"></i>Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass rounded-3xl overflow-hidden fade-in">
+                    <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-600 flex items-center justify-center">
+                        <i class="fas fa-globe text-6xl text-white"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <h3 class="text-xl font-bold mb-2">Secure Web Application</h3>
+                        <p class="text-center mb-4">Full-stack web app with advanced security features</p>
+                        <div class="space-x-2">
+                            <span class="px-2 py-1 bg-white bg-opacity-20 rounded text-xs">React</span>
+                            <span class="px-2 py-1 bg-white bg-opacity-20 rounded text-xs">Node.js</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Secure Web Application</h3>
+                        <p class="text-gray-400 mb-4">Developed a full-stack web application with advanced security features and user authentication.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-sm">React</span>
+                            <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">Node.js</span>
+                            <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm">MySQL</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fab fa-github mr-1"></i>Code
+                            </a>
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fas fa-external-link-alt mr-1"></i>Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card glass rounded-3xl overflow-hidden fade-in">
+                    <div class="h-48 bg-gradient-to-br from-yellow-400 to-orange-600 flex items-center justify-center">
+                        <i class="fas fa-cloud text-6xl text-white"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <h3 class="text-xl font-bold mb-2">Cloud Security Monitor</h3>
+                        <p class="text-center mb-4">AWS-based security monitoring and alerting system</p>
+                        <div class="space-x-2">
+                            <span class="px-2 py-1 bg-white bg-opacity-20 rounded text-xs">AWS</span>
+                            <span class="px-2 py-1 bg-white bg-opacity-20 rounded text-xs">Python</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Cloud Security Monitor</h3>
+                        <p class="text-gray-400 mb-4">Built a cloud-based security monitoring system with real-time alerting and automated response capabilities.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-yellow-400 bg-opacity-20 text-yellow-400 rounded-full text-sm">AWS</span>
+                            <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">Lambda</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fab fa-github mr-1"></i>Code
+                            </a>
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fas fa-external-link-alt mr-1"></i>Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card glass rounded-3xl overflow-hidden fade-in">
+                    <div class="h-48 bg-gradient-to-br from-red-400 to-pink-600 flex items-center justify-center">
+                        <i class="fas fa-bug text-6xl text-white"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <h3 class="text-xl font-bold mb-2">Vulnerability Scanner</h3>
+                        <p class="text-center mb-4">Automated web application vulnerability detection tool</p>
+                        <div class="space-x-2">
+                            <span class="px-2 py-1 bg-white bg-opacity-20 rounded text-xs">Python</span>
+                            <span class="px-2 py-1 bg-white bg-opacity-20 rounded text-xs">Burp Suite</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Vulnerability Scanner</h3>
+                        <p class="text-gray-400 mb-4">Created an automated vulnerability scanner for web applications with detailed reporting and remediation suggestions.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-red-400 bg-opacity-20 text-red-400 rounded-full text-sm">Burp Suite</span>
+                            <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">OWASP</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fab fa-github mr-1"></i>Code
+                            </a>
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fas fa-external-link-alt mr-1"></i>Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card glass rounded-3xl overflow-hidden fade-in">
+                    <div class="h-48 bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-6xl text-white"></i>
+                    </div>
+                    <div class="project-overlay">
+                        <h3 class="text-xl font-bold mb-2">Mobile Security App</h3>
+                        <p class="text-center mb-4">Android security application with threat detection</p>
+                        <div class="space-x-2">
+                            <span class="px-2 py-1 bg-white bg-opacity-20 rounded text-xs">Java</span>
+                            <span class="px-2 py-1 bg-white bg-opacity-20 rounded text-xs">Android</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Mobile Security App</h3>
+                        <p class="text-gray-400 mb-4">Developed an Android security application with real-time threat detection and privacy protection features.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-orange-400 bg-opacity-20 text-orange-400 rounded-full text-sm">Java</span>
+                            <span class="px-3 py-1 bg-green-400 bg-opacity-20 text-green-400 rounded-full text-sm">Android</span>
+                            <span class="px-3 py-1 bg-blue-400 bg-opacity-20 text-blue-400 rounded-full text-sm">Firebase</span>
+                        </div>
+                        <div class="flex space-x-3">
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fab fa-github mr-1"></i>Code
+                            </a>
+                            <a href="#" class="text-cyan-400 hover:text-cyan-300">
+                                <i class="fas fa-external-link-alt mr-1"></i>Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience/Timeline Section -->
+    <section id="experience" class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">Education & Experience</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto"></div>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="timeline">
+                    <div class="timeline-item fade-in">
+                        <div class="glass p-6 rounded-3xl">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <h3 class="text-xl font-bold text-cyan-400">B.Tech in Cloud Technology & Information Security</h3>
+                                <span class="text-sm text-gray-400">2021 - 2025</span>
+                            </div>
+                            <p class="text-gray-300 mb-2"><strong>Jain University, Bangalore</strong></p>
+                            <p class="text-gray-400">Specializing in cloud security, cybersecurity fundamentals, and modern information security practices. Focus on practical applications of security technologies and ethical hacking methodologies.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in">
+                        <div class="glass p-6 rounded-3xl">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <h3 class="text-xl font-bold text-cyan-400">Cybersecurity Research & Learning</h3>
+                                <span class="text-sm text-gray-400">2022 - Present</span>
+                            </div>
+                            <p class="text-gray-300 mb-2"><strong>Independent Research</strong></p>
+                            <p class="text-gray-400">Continuous learning in penetration testing, digital forensics, and vulnerability assessment. Regular participation in CTF competitions and hands-on security projects.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in">
+                        <div class="glass p-6 rounded-3xl">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <h3 class="text-xl font-bold text-cyan-400">Cloud & Azure Certifications</h3>
+                                <span class="text-sm text-gray-400">2023</span>
+                            </div>
+                            <p class="text-gray-300 mb-2"><strong>Microsoft Learn</strong></p>
+                            <p class="text-gray-400">Completed multiple Microsoft Azure certifications focusing on identity management, security, and cloud infrastructure. Gained expertise in SC-300 and MS-500 domains.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in">
+                        <div class="glass p-6 rounded-3xl">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <h3 class="text-xl font-bold text-cyan-400">Ethical Hacking Specialization</h3>
+                                <span class="text-sm text-gray-400">2022 - 2024</span>
+                            </div>
+                            <p class="text-gray-300 mb-2"><strong>Multiple Institutions</strong></p>
+                            <p class="text-gray-400">Comprehensive training in ethical hacking from EC-Council, IHack Academy, and other recognized institutions. Hands-on experience with penetration testing tools and methodologies.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in">
+                        <div class="glass p-6 rounded-3xl">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <h3 class="text-xl font-bold text-cyan-400">Full Stack Development Projects</h3>
+                                <span class="text-sm text-gray-400">2021 - Present</span>
+                            </div>
+                            <p class="text-gray-300 mb-2"><strong>Personal & Academic Projects</strong></p>
+                            <p class="text-gray-400">Developed multiple web applications using React, Node.js, and various databases. Focus on implementing security best practices and secure coding principles.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item fade-in">
+                        <div class="glass p-6 rounded-3xl">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                                <h3 class="text-xl font-bold text-cyan-400">IoT Security Solutions</h3>
+                                <span class="text-sm text-gray-400">2022 - Present</span>
+                            </div>
+                            <p class="text-gray-300 mb-2"><strong>Hardware Projects</strong></p>
+                            <p class="text-gray-400">Built various IoT security systems using ESP32, Arduino, and sensor technologies. Focus on secure communication protocols and device authentication.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-black bg-opacity-20">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">Get In Touch</h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                    Ready to discuss cybersecurity challenges, collaboration opportunities, or innovative projects? 
+                    Let's connect and secure the digital future together.
+                </p>
+            </div>
+
+            <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="fade-in">
+                    <div class="glass p-8 rounded-3xl">
+                        <h3 class="text-2xl font-bold mb-8 text-cyan-400">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-cyan-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-400">Email</div>
+                                    <a href="mailto:gsunilkumar@myyahoo.com" class="text-lg hover:text-cyan-400 transition-colors">
+                                        gsunilkumar@myyahoo.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-green-400 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-green-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-400">Phone</div>
+                                    <a href="tel:+91733*****18" class="text-lg hover:text-green-400 transition-colors">
+                                        +91 7339586018
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-blue-400 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-400">Location</div>
+                                    <div class="text-lg">Bangalore, India</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-purple-400 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-graduation-cap text-purple-400"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-400">University</div>
+                                    <div class="text-lg">Jain University, Bangalore</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-8 border-t border-gray-700">
+                            <h4 class="text-lg font-bold mb-4">Social Media</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/skuser404" target="_blank" class="social-icon">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/gsunilkumarcybersecurity" target="_blank" class="social-icon">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="mailto:gsunilkumar@myyahoo.com" class="social-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                                <a href="tel:+917339586018" class="social-icon">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="fade-in">
+                    <div class="glass p-8 rounded-3xl">
+                        <h3 class="text-2xl font-bold mb-8 text-cyan-400">Send a Message</h3>
+                        
+                        <form class="contact-form" onsubmit="handleSubmit(event)">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="text" placeholder="Your Name" required>
+                                <input type="email" placeholder="Your Email" required>
+                            </div>
+                            <input type="text" placeholder="Subject" required>
+                            <textarea rows="6" placeholder="Your Message" required></textarea>
+                            
+                            <button type="submit" class="btn btn-primary w-full">
+                                <i class="fas fa-paper-plane mr-2"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <div class="text-2xl font-bold font-mono mb-4">
+                        Sunil Kumar<span class="text-cyan-400">_</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Passionate cybersecurity student dedicated to securing the digital future through innovative solutions and ethical practices.
                     </p>
-                    <p class="text-gray-300 leading-relaxed">
-                        As the Technical Lead of the Cloud Club, I actively organize Capture The Flag (CTF) events, lead web-based cybersecurity games, and contribute to awareness through interactive platforms.
-                    </p>
-                </div>
-
-                <!-- Experience Section -->
-                <div class="cyber-card section">
-                    <h2 class="text-2xl font-bold glow-text mb-4">
-                        <i class="fas fa-briefcase mr-2"></i>Experience
-                    </h2>
-                    <div class="space-y-4">
-                        <div class="border-l-4 border-green-400 pl-4">
-                            <h3 class="text-xl font-semibold text-cyan-400">Technical Lead Cloud Club</h3>
-                            <p class="text-gray-400">Jain (Deemed-to-be University) | Feb 2025 - Present</p>
-                            <p class="text-gray-300 mt-2">Leading cloud computing initiatives and organizing cybersecurity events.</p>
-                        </div>
-                        <div class="border-l-4 border-green-400 pl-4">
-                            <h3 class="text-xl font-semibold text-cyan-400">Cybersecurity Intern</h3>
-                            <p class="text-gray-400">ApexPlanet Software Pvt. Ltd.</p>
-                            <p class="text-gray-300 mt-2">Enhancing backend and frontend skills using PHP, MySQL, and Flutter.</p>
-                        </div>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/skuser404" target="_blank" class="text-gray-400 hover:text-cyan-400 transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/gsunilkumarcybersecurity" target="_blank" class="text-gray-400 hover:text-cyan-400 transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="mailto:gsunilkumar@myyahoo.com" class="text-gray-400 hover:text-cyan-400 transition-colors">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Education Section -->
-                <div class="cyber-card section">
-                    <h2 class="text-2xl font-bold glow-text mb-4">
-                        <i class="fas fa-graduation-cap mr-2"></i>Education
-                    </h2>
-                    <div class="border-l-4 border-green-400 pl-4">
-                        <h3 class="text-xl font-semibold text-cyan-400">B.Tech in Cloud Technology & Information Security</h3>
-                        <p class="text-gray-400">Jain (Deemed-to-be University) | 2023 - 2027</p>
-                        <p class="text-gray-300 mt-2">Specialization in Cyber/Computer Forensics and Counterterrorism</p>
-                    </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-cyan-400 transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-cyan-400 transition-colors">About</a></li>
+                        <li><a href="#skills" class="text-gray-400 hover:text-cyan-400 transition-colors">Skills</a></li>
+                        <li><a href="#certifications" class="text-gray-400 hover:text-cyan-400 transition-colors">Certifications</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-cyan-400 transition-colors">Projects</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-cyan-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Specializations</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>• Ethical Hacking</li>
+                        <li>• Cloud Security</li>
+                        <li>• IoT Development</li>
+                        <li>• Digital Forensics</li>
+                        <li>• Web Security</li>
+                        <li>• Identity Management</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Right Column -->
-            <div class="space-y-6">
-                <!-- Skills Section -->
-                <div class="cyber-card section">
-                    <h2 class="text-2xl font-bold glow-text mb-4">
-                        <i class="fas fa-code mr-2"></i>Technical Skills
-                    </h2>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-gray-300">Ethical Hacking</span>
-                                <span class="text-cyan-400">95%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-gray-300">Cybersecurity</span>
-                                <span class="text-cyan-400">90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-gray-300">Cloud Security</span>
-                                <span class="text-cyan-400">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-gray-300">Web Development</span>
-                                <span class="text-cyan-400">80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-gray-300">Digital Forensics</span>
-                                <span class="text-cyan-400">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Certifications Section -->
-                <div class="cyber-card section">
-                    <h2 class="text-2xl font-bold glow-text mb-4">
-                        <i class="fas fa-certificate mr-2"></i>Certifications
-                    </h2>
-                    <div class="flex flex-wrap">
-                        <span class="certification-badge">Certified Ethical Hacker (CEH)</span>
-                        <span class="certification-badge">AWS R-1</span>
-                        <span class="certification-badge">IBM Data Fundamentals</span>
-                        <span class="certification-badge">IBM IT Fundamentals</span>
-                        <span class="certification-badge">IBM Web Development</span>
-                        <span class="certification-badge">Operating Systems - Coursera</span>
-                    </div>
-                </div>
-
-                <!-- Specializations Section -->
-                <div class="cyber-card section">
-                    <h2 class="text-2xl font-bold glow-text mb-4">
-                        <i class="fas fa-shield-alt mr-2"></i>Specializations
-                    </h2>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="text-center p-4 bg-black bg-opacity-50 rounded border border-green-400">
-                            <i class="fas fa-bug text-3xl text-green-400 mb-2"></i>
-                            <p class="text-gray-300">Penetration Testing</p>
-                        </div>
-                        <div class="text-center p-4 bg-black bg-opacity-50 rounded border border-green-400">
-                            <i class="fas fa-cloud text-3xl text-cyan-400 mb-2"></i>
-                            <p class="text-gray-300">Cloud Security</p>
-                        </div>
-                        <div class="text-center p-4 bg-black bg-opacity-50 rounded border border-green-400">
-                            <i class="fas fa-search text-3xl text-purple-400 mb-2"></i>
-                            <p class="text-gray-300">Digital Forensics</p>
-                        </div>
-                        <div class="text-center p-4 bg-black bg-opacity-50 rounded border border-green-400">
-                            <i class="fas fa-flag text-3xl text-red-400 mb-2"></i>
-                            <p class="text-gray-300">CTF Organizer</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2025 Sunil Kumar Govindaraju. All rights reserved. | 
+                    <span class="text-cyan-400">Securing the future, one line of code at a time.</span>
+                </p>
             </div>
         </div>
+    </footer>
 
-        <!-- Projects Section -->
-        <div class="cyber-card section mt-8">
-            <h2 class="text-2xl font-bold glow-text mb-4">
-                <i class="fas fa-project-diagram mr-2"></i>Current Projects
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-black bg-opacity-50 p-4 rounded border border-green-400">
-                    <h3 class="text-xl font-semibold text-cyan-400 mb-2">Digital DNA Identity System</h3>
-                    <p class="text-gray-300">Innovative blockchain-based identity verification system.</p>
-                </div>
-                <div class="bg-black bg-opacity-50 p-4 rounded border border-green-400">
-                    <h3 class="text-xl font-semibold text-cyan-400 mb-2">Universal Transport Card Portal</h3>
-                    <p class="text-gray-300">Smart transportation solution with integrated security features.</p>
-                </div>
-                <div class="bg-black bg-opacity-50 p-4 rounded border border-green-400">
-                    <h3 class="text-xl font-semibold text-cyan-400 mb-2">IoT Security Framework</h3>
-                    <p class="text-gray-300">Comprehensive security solutions for IoT devices and networks.</p>
-                </div>
-                <div class="bg-black bg-opacity-50 p-4 rounded border border-green-400">
-                    <h3 class="text-xl font-semibold text-cyan-400 mb-2">Real-time Sign Language Detection</h3>
-                    <p class="text-gray-300">AI-powered system using hybrid algorithms for accessibility.</p>
-                </div>
-            </div>
-        </div>
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-        <!-- Contact Section -->
-        <div class="cyber-card section text-center">
-            <h2 class="text-2xl font-bold glow-text mb-4">
-                <i class="fas fa-terminal mr-2"></i>Initialize Contact Protocol
-            </h2>
-            <div class="terminal-text mb-4 inline-block">
-                gsunilkumar@security:~$ ./contact.sh --collaborate
-            </div>
-            <p class="text-gray-300 mb-6">Ready to secure the digital world together? Let's connect!</p>
-            <div class="space-x-4">
-                <a href="https://www.linkedin.com/in/gsunilkumarcybersecurity/" target="_blank" class="cyber-button">
-                    <i class="fab fa-linkedin mr-2"></i>Connect on LinkedIn
-                </a>
-                <a href="mailto:contact@gsunilkumar.dev" class="cyber-button">
-                    <i class="fas fa-envelope mr-2"></i>Send Encrypted Message
-                </a>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="text-center mt-8 text-gray-500">
-            <div class="terminal-text inline-block mb-2">
-                © 2025 G SUNIL KUMAR | Ethical Hacker & Cybersecurity Expert
-            </div>
-            <p class="text-sm">Securing digital frontiers, one vulnerability at a time.</p>
+    <!-- Certificate Modal -->
+    <div class="modal" id="certModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="Certificate" style="max-width: 100%; height: auto;">
         </div>
     </div>
 
     <script>
-        // Matrix Rain Effect
-        function createMatrixRain() {
-            const matrixContainer = document.getElementById('matrixRain');
-            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initParticles();
+            initScrollAnimations();
+            initTypingAnimation();
+            showTerminal();
+        });
+
+        // Terminal functionality
+        function showTerminal() {
+            setTimeout(() => {
+                document.getElementById('terminal').style.display = 'block';
+                setTimeout(() => {
+                    closeTerminal();
+                }, 5000);
+            }, 1000);
+        }
+
+        function closeTerminal() {
+            document.getElementById('terminal').style.display = 'none';
+        }
+
+        // Theme toggle
+        let isLightMode = false;
+        let isHackerMode = false;
+
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+        function toggleTheme() {
+            isLightMode = !isLightMode;
+            const body = document.body;
+            const icon = document.getElementById('themeIcon');
+            
+            if (isLightMode) {
+                body.classList.add('light-mode');
+                icon.className = 'fas fa-moon';
+            } else {
+                body.classList.remove('light-mode');
+                icon.className = 'fas fa-sun';
+            }
+            
+            localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+        }
+
+        // Hacker mode toggle
+        function toggleHackerMode() {
+            isHackerMode = !isHackerMode;
+            const body = document.body;
+            const matrixRain = document.getElementById('matrixRain');
+            
+            if (isHackerMode) {
+                body.classList.add('hacker-mode');
+                matrixRain.classList.add('active');
+                initMatrixRain();
+            } else {
+                body.classList.remove('hacker-mode');
+                matrixRain.classList.remove('active');
+                matrixRain.innerHTML = '';
+            }
+        }
+
+        // Matrix rain effect
+        function initMatrixRain() {
+            const matrixRain = document.getElementById('matrixRain');
+            const characters = '01アカサタナハマヤラワガザダバパイキシチニヒミリウクスツヌフムユルエケセテネヘメレオコソトノホモヨロヲ';
             
             for (let i = 0; i < 50; i++) {
-                const char = document.createElement('div');
-                char.className = 'matrix-char';
-                char.textContent = chars[Math.floor(Math.random() * chars.length)];
-                char.style.left = Math.random() * 100 + '%';
-                char.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                char.style.animationDelay = Math.random() * 2 + 's';
-                matrixContainer.appendChild(char);
+                const column = document.createElement('div');
+                column.className = 'matrix-column';
+                column.style.left = Math.random() * 100 + '%';
+                column.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                column.style.animationDelay = Math.random() * 2 + 's';
+                
+                let text = '';
+                for (let j = 0; j < 20; j++) {
+                    text += characters.charAt(Math.floor(Math.random() * characters.length)) + '<br>';
+                }
+                column.innerHTML = text;
+                
+                matrixRain.appendChild(column);
             }
         }
 
-        // Particle System
-        function createParticles() {
-            const particleCount = 30;
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                document.body.appendChild(particle);
-            }
-        }
-
-        // Glitch Effect for Name
-        function addGlitchEffect() {
-            const nameElement = document.querySelector('.typewriter');
-            setInterval(() => {
-                nameElement.style.textShadow = `
-                    ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px 0 #ff0000,
-                    ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px 0 #00ff00,
-                    ${Math.random() * 10 - 5}px ${Math.random() * 10 - 5}px 0 #0000ff
-                `;
-                setTimeout(() => {
-                    nameElement.style.textShadow = '0 0 5px var(--cyber-green), 0 0 10px var(--cyber-green), 0 0 20px var(--cyber-green), 0 0 40px var(--cyber-green)';
-                }, 100);
-            }, 3000);
-        }
-
-        // Skill Bar Animation
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            skillBars.forEach((bar, index) => {
-                setTimeout(() => {
-                    bar.style.width = bar.style.width;
-                }, index * 200);
-            });
-        }
-
-        // Terminal Typing Effect
-        function terminalTypeEffect() {
-            const terminals = document.querySelectorAll('.terminal-text');
-            terminals.forEach(terminal => {
-                const text = terminal.textContent;
-                terminal.textContent = '';
-                let i = 0;
-                const typeInterval = setInterval(() => {
-                    terminal.textContent += text[i];
-                    i++;
-                    if (i >= text.length) {
-                        clearInterval(typeInterval);
-                    }
-                }, 50);
-            });
-        }
-
-        // Initialize Effects
-        document.addEventListener('DOMContentLoaded', function() {
-            createMatrixRain();
-            createParticles();
-            addGlitchEffect();
-            setTimeout(animateSkillBars, 1000);
+        // Particle background
+        function initParticles() {
+            const canvas = document.getElementById('particles');
+            const ctx = canvas.getContext('2d');
             
-            // Add hover effects to cards
-            const cards = document.querySelectorAll('.cyber-card');
-            cards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px) rotateX(5deg)';
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const particles = [];
+            const particleCount = 100;
+            
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    size: Math.random() * 2 + 1
                 });
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) rotateX(0)';
+            }
+            
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                particles.forEach(particle => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+                    
+                    if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+                    
+                    ctx.beginPath();
+                    ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(0, 245, 255, 0.5)';
+                    ctx.fill();
                 });
+                
+                // Connect nearby particles
+                particles.forEach((p1, i) => {
+                    particles.slice(i + 1).forEach(p2 => {
+                        const distance = Math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2);
+                        if (distance < 100) {
+                            ctx.beginPath();
+                            ctx.moveTo(p1.x, p1.y);
+                            ctx.lineTo(p2.x, p2.y);
+                            ctx.strokeStyle = `rgba(0, 245, 255, ${0.2 * (1 - distance / 100)})`;
+                            ctx.stroke();
+                        }
+                    });
+                });
+                
+                requestAnimationFrame(animate);
+            }
+            
+            animate();
+            
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+
+        // Scroll animations
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+                observer.observe(el);
             });
 
-            // Add click effect to social icons
-            const socialIcons = document.querySelectorAll('.social-icon');
-            socialIcons.forEach(icon => {
-                icon.addEventListener('click', function() {
-                    this.style.animation = 'none';
-                    setTimeout(() => {
-                        this.style.animation = '';
-                    }, 10);
-                });
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const navbar = document.getElementById('navbar');
+                const scrollTop = document.getElementById('scrollTop');
+                
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                    scrollTop.classList.add('visible');
+                } else {
+                    navbar.classList.remove('scrolled');
+                    scrollTop.classList.remove('visible');
+                }
+            });
+        }
+
+        // Typing animation
+        function initTypingAnimation() {
+            const text = "Securing the future, one line of code at a time.";
+            const element = document.querySelector('.typing-animation');
+            if (element) {
+                element.style.width = '0';
+                setTimeout(() => {
+                    element.style.width = '100%';
+                }, 1000);
+            }
+        }
+
+        // Certificate modal
+        function openModal(certId) {
+            const modal = document.getElementById('certModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            // Set certificate image based on certId
+            const certImages = {
+                'cert1': 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="100%" height="100%" fill="%23f0f0f0"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="16" fill="%23333">EC-Council EHE Certificate</text></svg>',
+                // Add other certificate images as needed
+            };
+            
+            modalImage.src = certImages[certId] || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="100%" height="100%" fill="%23f0f0f0"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="16" fill="%23333">Certificate Preview</text></svg>';
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('certModal');
+            modal.classList.remove('active');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
 
-        // Continuous Matrix Animation
-        setInterval(() => {
-            const matrixContainer = document.getElementById('matrixRain');
-            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-            
-            if (matrixContainer.children.length < 100) {
-                const char = document.createElement('div');
-                char.className = 'matrix-char';
-                char.textContent = chars[Math.floor(Math.random() * chars.length)];
-                char.style.left = Math.random() * 100 + '%';
-                char.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                matrixContainer.appendChild(char);
-                
-                setTimeout(() => {
-                    char.remove();
-                }, 5000);
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Contact form
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            event.target.reset();
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            toggleTheme();
+        }
+
+        // Mobile menu (if needed)
+        function toggleMobileMenu() {
+            // Mobile menu implementation
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'h') {
+                e.preventDefault();
+                toggleHackerMode();
             }
-        }, 500);
+            if (e.ctrlKey && e.key === 't') {
+                e.preventDefault();
+                toggleTheme();
+            }
+        });
+
+        // Console easter egg
+        console.log(`
+        ╔═══════════════════════════════════════════════════════════════╗
+        ║                                                               ║
+        ║   Welcome to Sunil Kumar's Portfolio!                        ║
+        ║                                                               ║
+        ║   🔐 Cybersecurity Enthusiast                                ║
+        ║   ☁️  Cloud Technology Student                               ║
+        ║   🚀 Full Stack Developer                                    ║
+        ║                                                               ║
+        ║   Easter Eggs:                                               ║
+        ║   • Ctrl + H: Toggle Hacker Mode                            ║
+        ║   • Ctrl + T: Toggle Theme                                  ║
+        ║   • Type 'hack' in console for surprise                    ║
+        ║                                                               ║
+        ║   Contact: gsunilkumar@myyahoo.com                          ║
+        ║                                                               ║
+        ╚═══════════════════════════════════════════════════════════════╝
+        `);
+
+        // Console command
+        window.hack = function() {
+            console.log('🔓 Access Granted! Welcome to the Matrix...');
+            toggleHackerMode();
+        };
     </script>
 </body>
 </html>
