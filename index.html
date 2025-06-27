@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sunil Kumar Govindaraju - Cybersecurity & Cloud Technology Portfolio</title>
-    
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
     <style>
         :root {
             --primary-color: #00f5ff;
@@ -104,9 +100,7 @@
         }
 
         @keyframes matrix-fall {
-            to {
-                transform: translateY(100vh);
-            }
+            to { transform: translateY(100vh); }
         }
 
         /* Terminal Popup */
@@ -169,11 +163,15 @@
             padding: 0 2rem;
         }
 
+        /* Fixed Typing Animation */
         .typing-animation {
+            display: inline-block;
             overflow: hidden;
             border-right: 3px solid var(--primary-color);
             white-space: nowrap;
-            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+            font-family: 'JetBrains Mono', monospace;
+            animation: typing 4s steps(50, end), blink-caret 0.75s step-end infinite;
+            max-width: 100%;
         }
 
         @keyframes typing {
@@ -184,6 +182,16 @@
         @keyframes blink-caret {
             from, to { border-color: transparent }
             50% { border-color: var(--primary-color) }
+        }
+
+        /* Profile Image */
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            box-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
         }
 
         /* Skills */
@@ -286,8 +294,7 @@
         }
 
         /* Contact Form */
-        .contact-form input,
-        .contact-form textarea {
+        .contact-form input, .contact-form textarea {
             background: var(--bg-card-dark);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-light);
@@ -298,8 +305,7 @@
             transition: all 0.3s ease;
         }
 
-        .contact-form input:focus,
-        .contact-form textarea:focus {
+        .contact-form input:focus, .contact-form textarea:focus {
             outline: none;
             border-color: var(--primary-color);
             box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
@@ -362,27 +368,25 @@
                 min-width: 90%;
                 margin: 0 20px;
             }
-
             .hero {
                 padding: 0 1rem;
                 text-align: center;
             }
-
             .cert-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
-
             .timeline {
                 padding-left: 2rem;
             }
-
             .timeline::before {
                 left: 0.5rem;
             }
-
             .timeline-item::before {
                 left: -1.5rem;
+            }
+            .typing-animation {
+                font-size: 1.2rem;
             }
         }
 
@@ -565,12 +569,11 @@
                     <h1 class="text-5xl lg:text-7xl font-bold mb-6">
                         Hi, I'm <span class="text-cyan-400">Sunil Kumar</span>
                     </h1>
-                    <div class="text-2xl lg:text-3xl mb-6 typing-animation">
-                        Securing the future, one line of code at a time.
+                    <div class="text-2xl lg:text-3xl mb-6">
+                        <span class="typing-animation">Securing the future, one line of code at a time.</span>
                     </div>
                     <p class="text-xl text-gray-400 mb-8 max-w-2xl">
-                        B.Tech student specializing in Cloud Technology & Information Security at Jain University, Bangalore. 
-                        Passionate about cybersecurity, ethical hacking, and cutting-edge technology.
+                        B.Tech student specializing in Cloud Technology & Information Security at Jain University, Bangalore. Passionate about cybersecurity, ethical hacking, and cutting-edge technology.
                     </p>
                     <div class="flex flex-wrap gap-4">
                         <a href="#contact" class="btn btn-primary">
@@ -585,14 +588,13 @@
                     </div>
                 </div>
                 <div class="lg:w-1/2 mt-12 lg:mt-0 slide-in-right">
-                    <div class="glass p-8 rounded-3xl">
-                        <div class="w-64 h-64 mx-auto bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center text-6xl text-white mb-6">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
+                    <div class="glass p-8 rounded-3xl text-center">
+                        <img src="https://via.placeholder.com/200x200/00f5ff/ffffff?text=SK" alt="Sunil Kumar" class="profile-image mx-auto mb-6">
                         <div class="text-center">
                             <div class="text-sm text-gray-400 mb-2">Current Status</div>
-                            <div class="text-lg font-semibold">🔒 Securing Digital Assets</div>
-                            <div class="text-sm text-gray-400 mt-2">📍 Bangalore, India</div>
+                            <div class="text-lg font-semibold">🎓 B.Tech Student - Cloud Technology & Information Security</div>
+                            <div class="text-sm text-cyan-400 mt-2">📍 Jain University, Bangalore</div>
+                            <div class="text-sm text-gray-400 mt-1">🔒 Specializing in Cybersecurity & Ethical Hacking</div>
                         </div>
                     </div>
                 </div>
@@ -607,19 +609,15 @@
                 <h2 class="text-4xl lg:text-5xl font-bold mb-6">About Me</h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto"></div>
             </div>
-
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="slide-in-left">
                     <div class="glass p-8 rounded-3xl">
                         <h3 class="text-2xl font-bold mb-6 text-cyan-400">Who I Am</h3>
                         <p class="text-lg text-gray-300 mb-6">
-                            I'm a passionate cybersecurity enthusiast and B.Tech student specializing in Cloud Technology and Information Security 
-                            at Jain University, Bangalore. My journey in the digital security realm began with a fascination for understanding 
-                            how systems work and how to protect them from evolving threats.
+                            I'm a passionate cybersecurity enthusiast and B.Tech student specializing in Cloud Technology and Information Security at Jain University, Bangalore. My journey in the digital security realm began with a fascination for understanding how systems work and how to protect them from evolving threats.
                         </p>
                         <p class="text-lg text-gray-300 mb-6">
-                            With expertise spanning ethical hacking, cloud security, IoT development, and full-stack web development, 
-                            I'm committed to building secure, scalable solutions that protect digital assets and user privacy.
+                            With expertise spanning ethical hacking, cloud security, IoT development, and full-stack web development, I'm committed to building secure, scalable solutions that protect digital assets and user privacy.
                         </p>
                         <div class="flex flex-wrap gap-3">
                             <span class="px-3 py-1 bg-cyan-400 bg-opacity-20 text-cyan-400 rounded-full text-sm">Ethical Hacker</span>
@@ -629,7 +627,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="slide-in-right">
                     <div class="glass p-8 rounded-3xl">
                         <h3 class="text-2xl font-bold mb-6 text-cyan-400">Education & Contact</h3>
@@ -646,14 +643,6 @@
                                 <div class="ml-4">
                                     <a href="mailto:gsunilkumar@myyahoo.com" class="hover:text-cyan-400 transition-colors">
                                         gsunilkumar@myyahoo.com
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-phone text-cyan-400 w-6"></i>
-                                <div class="ml-4">
-                                    <a href="tel:+917339586018" class="hover:text-cyan-400 transition-colors">
-                                        +91 7339586018
                                     </a>
                                 </div>
                             </div>
@@ -675,7 +664,6 @@
                 <h2 class="text-4xl lg:text-5xl font-bold mb-6">Technical Skills</h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto"></div>
             </div>
-
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Programming Languages -->
                 <div class="skill-card glass p-8 rounded-3xl fade-in">
@@ -922,14 +910,12 @@
                 <h2 class="text-4xl lg:text-5xl font-bold mb-6">Certifications & Achievements</h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto mb-6"></div>
                 <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-                    Professional certifications and achievements that validate my expertise in cybersecurity, 
-                    cloud technologies, and software development.
+                    Professional certifications and achievements that validate my expertise in cybersecurity, cloud technologies, and software development.
                 </p>
             </div>
-
             <div class="cert-grid">
                 <!-- EC-Council EHE Certificate -->
-                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert1')">
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openCertificate('cert1')">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center mr-4">
                             <i class="fas fa-shield-alt text-white"></i>
@@ -943,7 +929,7 @@
                 </div>
 
                 <!-- Digital Forensics Certificate -->
-                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert2')">
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openCertificate('cert2')">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4">
                             <i class="fas fa-search text-white"></i>
@@ -957,7 +943,7 @@
                 </div>
 
                 <!-- CTF Participation -->
-                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert3')">
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openCertificate('cert3')">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mr-4">
                             <i class="fas fa-flag text-white"></i>
@@ -971,7 +957,7 @@
                 </div>
 
                 <!-- SQL Certifications -->
-                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert4')">
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openCertificate('cert4')">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4">
                             <i class="fas fa-database text-white"></i>
@@ -985,7 +971,7 @@
                 </div>
 
                 <!-- Oracle SQL Certificate -->
-                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert5')">
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openCertificate('cert5')">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mr-4">
                             <i class="fas fa-database text-white"></i>
@@ -999,7 +985,7 @@
                 </div>
 
                 <!-- Ethical Hacking University -->
-                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert6')">
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openCertificate('cert6')">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-cyan-500 rounded-full flex items-center justify-center mr-4">
                             <i class="fas fa-graduation-cap text-white"></i>
@@ -1013,7 +999,7 @@
                 </div>
 
                 <!-- Microsoft Azure Certifications -->
-                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert7')">
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openCertificate('cert7')">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
                             <i class="fab fa-microsoft text-white"></i>
@@ -1027,7 +1013,7 @@
                 </div>
 
                 <!-- Intel AI Program -->
-                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert8')">
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openCertificate('cert8')">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center mr-4">
                             <i class="fas fa-brain text-white"></i>
@@ -1041,7 +1027,7 @@
                 </div>
 
                 <!-- TryHackMe Badge -->
-                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert9')">
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openCertificate('cert9')">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-green-400 rounded-full flex items-center justify-center mr-4">
                             <i class="fas fa-terminal text-white"></i>
@@ -1055,7 +1041,7 @@
                 </div>
 
                 <!-- Python Programming -->
-                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert10')">
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openCertificate('cert10')">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mr-4">
                             <i class="fab fa-python text-white"></i>
@@ -1069,7 +1055,7 @@
                 </div>
 
                 <!-- IHack Academy -->
-                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert11')">
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openCertificate('cert11')">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center mr-4">
                             <i class="fas fa-user-secret text-white"></i>
@@ -1083,7 +1069,7 @@
                 </div>
 
                 <!-- UNESCO Certificate -->
-                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openModal('cert12')">
+                <div class="cert-card glass p-6 rounded-3xl fade-in" onclick="openCertificate('cert12')">
                     <div class="flex items-center mb-4">
                         <div class="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center mr-4">
                             <i class="fas fa-globe text-white"></i>
@@ -1109,7 +1095,6 @@
                     A showcase of my latest work in cybersecurity, web development, and IoT solutions.
                 </p>
             </div>
-
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Project 1 -->
                 <div class="project-card glass rounded-3xl overflow-hidden fade-in">
@@ -1313,7 +1298,6 @@
                 <h2 class="text-4xl lg:text-5xl font-bold mb-6">Education & Experience</h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto"></div>
             </div>
-
             <div class="max-w-4xl mx-auto">
                 <div class="timeline">
                     <div class="timeline-item fade-in">
@@ -1393,17 +1377,14 @@
                 <h2 class="text-4xl lg:text-5xl font-bold mb-6">Get In Touch</h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto mb-6"></div>
                 <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-                    Ready to discuss cybersecurity challenges, collaboration opportunities, or innovative projects? 
-                    Let's connect and secure the digital future together.
+                    Ready to discuss cybersecurity challenges, collaboration opportunities, or innovative projects? Let's connect and secure the digital future together.
                 </p>
             </div>
-
             <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
                 <!-- Contact Info -->
                 <div class="fade-in">
                     <div class="glass p-8 rounded-3xl">
                         <h3 class="text-2xl font-bold mb-8 text-cyan-400">Contact Information</h3>
-                        
                         <div class="space-y-6">
                             <div class="flex items-center">
                                 <div class="w-12 h-12 bg-cyan-400 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
@@ -1413,18 +1394,6 @@
                                     <div class="text-sm text-gray-400">Email</div>
                                     <a href="mailto:gsunilkumar@myyahoo.com" class="text-lg hover:text-cyan-400 transition-colors">
                                         gsunilkumar@myyahoo.com
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center">
-                                <div class="w-12 h-12 bg-green-400 bg-opacity-20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-phone text-green-400"></i>
-                                </div>
-                                <div>
-                                    <div class="text-sm text-gray-400">Phone</div>
-                                    <a href="tel:+91733*****18" class="text-lg hover:text-green-400 transition-colors">
-                                        +91 7339586018
                                     </a>
                                 </div>
                             </div>
@@ -1462,9 +1431,6 @@
                                 <a href="mailto:gsunilkumar@myyahoo.com" class="social-icon">
                                     <i class="fas fa-envelope"></i>
                                 </a>
-                                <a href="tel:+917339586018" class="social-icon">
-                                    <i class="fas fa-phone"></i>
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -1474,7 +1440,6 @@
                 <div class="fade-in">
                     <div class="glass p-8 rounded-3xl">
                         <h3 class="text-2xl font-bold mb-8 text-cyan-400">Send a Message</h3>
-                        
                         <form class="contact-form" onsubmit="handleSubmit(event)">
                             <div class="grid md:grid-cols-2 gap-4">
                                 <input type="text" placeholder="Your Name" required>
@@ -1482,7 +1447,6 @@
                             </div>
                             <input type="text" placeholder="Subject" required>
                             <textarea rows="6" placeholder="Your Message" required></textarea>
-                            
                             <button type="submit" class="btn btn-primary w-full">
                                 <i class="fas fa-paper-plane mr-2"></i>Send Message
                             </button>
@@ -1516,7 +1480,6 @@
                         </a>
                     </div>
                 </div>
-
                 <div>
                     <h4 class="text-lg font-bold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
@@ -1528,7 +1491,6 @@
                         <li><a href="#contact" class="text-gray-400 hover:text-cyan-400 transition-colors">Contact</a></li>
                     </ul>
                 </div>
-
                 <div>
                     <h4 class="text-lg font-bold mb-4">Specializations</h4>
                     <ul class="space-y-2 text-gray-400">
@@ -1541,11 +1503,9 @@
                     </ul>
                 </div>
             </div>
-
             <div class="border-t border-gray-700 mt-12 pt-8 text-center">
                 <p class="text-gray-400">
-                    © 2025 Sunil Kumar Govindaraju. All rights reserved. | 
-                    <span class="text-cyan-400">Securing the future, one line of code at a time.</span>
+                    © 2025 Sunil Kumar Govindaraju. All rights reserved. | <span class="text-cyan-400">Securing the future, one line of code at a time.</span>
                 </p>
             </div>
         </div>
@@ -1565,6 +1525,22 @@
     </div>
 
     <script>
+        // Certificate Drive Links - Replace these with your actual Google Drive links
+        const certificateLinks = {
+            'cert1': '', // EC-Council EHE Certificate
+            'cert2': '', // Digital Forensics Certificate
+            'cert3': '', // CTF Participation
+            'cert4': '', // SQL Certifications
+            'cert5': '', // Oracle SQL Certificate
+            'cert6': '', // Ethical Hacking University
+            'cert7': '', // Microsoft Azure Certifications
+            'cert8': '', // Intel AI Program
+            'cert9': '', // TryHackMe Badge
+            'cert10': '', // Python Programming
+            'cert11': '', // IHack Academy
+            'cert12': '' // UNESCO Certificate
+        };
+
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             initParticles();
@@ -1572,6 +1548,16 @@
             initTypingAnimation();
             showTerminal();
         });
+
+        // Certificate function to open Drive links
+        function openCertificate(certId) {
+            const driveLink = certificateLinks[certId];
+            if (driveLink) {
+                window.open(driveLink, '_blank');
+            } else {
+                alert('Certificate link not available. Please contact for more information.');
+            }
+        }
 
         // Terminal functionality
         function showTerminal() {
@@ -1597,7 +1583,7 @@
             isLightMode = !isLightMode;
             const body = document.body;
             const icon = document.getElementById('themeIcon');
-            
+
             if (isLightMode) {
                 body.classList.add('light-mode');
                 icon.className = 'fas fa-moon';
@@ -1605,7 +1591,7 @@
                 body.classList.remove('light-mode');
                 icon.className = 'fas fa-sun';
             }
-            
+
             localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
         }
 
@@ -1614,7 +1600,7 @@
             isHackerMode = !isHackerMode;
             const body = document.body;
             const matrixRain = document.getElementById('matrixRain');
-            
+
             if (isHackerMode) {
                 body.classList.add('hacker-mode');
                 matrixRain.classList.add('active');
@@ -1630,20 +1616,19 @@
         function initMatrixRain() {
             const matrixRain = document.getElementById('matrixRain');
             const characters = '01アカサタナハマヤラワガザダバパイキシチニヒミリウクスツヌフムユルエケセテネヘメレオコソトノホモヨロヲ';
-            
+
             for (let i = 0; i < 50; i++) {
                 const column = document.createElement('div');
                 column.className = 'matrix-column';
                 column.style.left = Math.random() * 100 + '%';
                 column.style.animationDuration = (Math.random() * 3 + 2) + 's';
                 column.style.animationDelay = Math.random() * 2 + 's';
-                
+
                 let text = '';
                 for (let j = 0; j < 20; j++) {
                     text += characters.charAt(Math.floor(Math.random() * characters.length)) + '<br>';
                 }
                 column.innerHTML = text;
-                
                 matrixRain.appendChild(column);
             }
         }
@@ -1652,13 +1637,12 @@
         function initParticles() {
             const canvas = document.getElementById('particles');
             const ctx = canvas.getContext('2d');
-            
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            
+
             const particles = [];
             const particleCount = 100;
-            
+
             for (let i = 0; i < particleCount; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
@@ -1668,23 +1652,23 @@
                     size: Math.random() * 2 + 1
                 });
             }
-            
+
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                
+
                 particles.forEach(particle => {
                     particle.x += particle.vx;
                     particle.y += particle.vy;
-                    
+
                     if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
                     if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-                    
+
                     ctx.beginPath();
                     ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
                     ctx.fillStyle = 'rgba(0, 245, 255, 0.5)';
                     ctx.fill();
                 });
-                
+
                 // Connect nearby particles
                 particles.forEach((p1, i) => {
                     particles.slice(i + 1).forEach(p2 => {
@@ -1698,12 +1682,12 @@
                         }
                     });
                 });
-                
+
                 requestAnimationFrame(animate);
             }
-            
+
             animate();
-            
+
             window.addEventListener('resize', () => {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
@@ -1728,7 +1712,7 @@
             window.addEventListener('scroll', () => {
                 const navbar = document.getElementById('navbar');
                 const scrollTop = document.getElementById('scrollTop');
-                
+
                 if (window.scrollY > 100) {
                     navbar.classList.add('scrolled');
                     scrollTop.classList.add('visible');
@@ -1741,28 +1725,19 @@
 
         // Typing animation
         function initTypingAnimation() {
-            const text = "Securing the future, one line of code at a time.";
             const element = document.querySelector('.typing-animation');
             if (element) {
-                element.style.width = '0';
                 setTimeout(() => {
-                    element.style.width = '100%';
+                    element.style.animation = 'typing 4s steps(50, end), blink-caret 0.75s step-end infinite';
                 }, 1000);
             }
         }
 
-        // Certificate modal
+        // Modal functions
         function openModal(certId) {
             const modal = document.getElementById('certModal');
             const modalImage = document.getElementById('modalImage');
-            
-            // Set certificate image based on certId
-            const certImages = {
-                'cert1': 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="100%" height="100%" fill="%23f0f0f0"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="16" fill="%23333">EC-Council EHE Certificate</text></svg>',
-                // Add other certificate images as needed
-            };
-            
-            modalImage.src = certImages[certId] || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="100%" height="100%" fill="%23f0f0f0"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="16" fill="%23333">Certificate Preview</text></svg>';
+            modalImage.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="100%" height="100%" fill="%23f0f0f0"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" font-family="Arial" font-size="16" fill="%23333">Certificate Preview</text></svg>';
             modal.classList.add('active');
         }
 
@@ -1806,11 +1781,6 @@
             toggleTheme();
         }
 
-        // Mobile menu (if needed)
-        function toggleMobileMenu() {
-            // Mobile menu implementation
-        }
-
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && e.key === 'h') {
@@ -1825,22 +1795,22 @@
 
         // Console easter egg
         console.log(`
-        ╔═══════════════════════════════════════════════════════════════╗
-        ║                                                               ║
-        ║   Welcome to Sunil Kumar's Portfolio!                        ║
-        ║                                                               ║
-        ║   🔐 Cybersecurity Enthusiast                                ║
-        ║   ☁️  Cloud Technology Student                               ║
-        ║   🚀 Full Stack Developer                                    ║
-        ║                                                               ║
-        ║   Easter Eggs:                                               ║
-        ║   • Ctrl + H: Toggle Hacker Mode                            ║
-        ║   • Ctrl + T: Toggle Theme                                  ║
-        ║   • Type 'hack' in console for surprise                    ║
-        ║                                                               ║
-        ║   Contact: gsunilkumar@myyahoo.com                          ║
-        ║                                                               ║
-        ╚═══════════════════════════════════════════════════════════════╝
+╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║  Welcome to Sunil Kumar's Portfolio!                         ║
+║                                                               ║
+║  🔐 Cybersecurity Enthusiast                                 ║
+║  ☁️ Cloud Technology Student                                  ║
+║  🚀 Full Stack Developer                                     ║
+║                                                               ║
+║  Easter Eggs:                                                 ║
+║  • Ctrl + H: Toggle Hacker Mode                              ║
+║  • Ctrl + T: Toggle Theme                                    ║
+║  • Type 'hack' in console for surprise                       ║
+║                                                               ║
+║  Contact: gsunilkumar@myyahoo.com                            ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
         `);
 
         // Console command
